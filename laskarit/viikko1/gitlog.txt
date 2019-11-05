@@ -1,0 +1,113 @@
+commit 54ec831add643cf0c59069caec65b5a3a57b5528
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:44:10 2019 +0200
+
+    poistoja
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 3ce219efc222d4d6ed31029fe7bccbab82fdf112
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:41:07 2019 +0200
+
+    tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit eb970a8d85bec53d616d9a7f197cf0c620b67c78
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:34:16 2019 +0200
+
+    stage this hunk
+
+ eka.txt    | 3 ++-
+ kolmas.txt | 4 +++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+commit 50607affee68b64ecffa38cd343aa33c1d266ab0
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:31:42 2019 +0200
+
+    eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 233f82aea753de588b8b38fd711b40774cd687c6
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:30:10 2019 +0200
+
+    poisto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 9d057f4e962f49af2addac21adca680d1594ae33
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:25:30 2019 +0200
+
+    lorem ipsum
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 8ff3ee6f57d16d43d0c5492b568ace2b49a13433
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:22:31 2019 +0200
+
+    kommit
+
+ tiedosto.txt | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+commit f274477a0be82fa3ef6f11e733d50d963d3f63e5
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:15:53 2019 +0200
+
+    stuff
+
+ stuff/readmenot.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit bf5db7f25a363f43d5c8538c7314647022ab9839
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:14:49 2019 +0200
+
+    toka ja kolmas muutettu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 7366160d029c8f8afdffd3c274d03f890539dd88
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Tue Nov 5 14:13:39 2019 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 77214fdcdc76eb6353114f15b97bda275df6222b
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Mon Nov 4 15:51:43 2019 +0200
+
+    muutos ja lisays
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 4dceef562b90944765386c34fcb47177b7171dda
+Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
+Date:   Mon Nov 4 15:49:25 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
