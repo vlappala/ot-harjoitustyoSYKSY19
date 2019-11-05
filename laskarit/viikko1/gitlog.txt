@@ -1,4 +1,4 @@
-commit 54ec831add643cf0c59069caec65b5a3a57b5528
+ommit 54ec831add643cf0c59069caec65b5a3a57b5528
 Author: Ville Lappalainen <ville.lappalainen@helsinki.fi>
 Date:   Tue Nov 5 14:44:10 2019 +0200
 
