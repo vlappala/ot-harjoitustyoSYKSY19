@@ -10,11 +10,16 @@ public class MaksukorttiTest {
 
     @Before
     public void setUp() {
-        kortti = new Maksukortti(10);
+        kortti = new Maksukortti(1000);
     }
 
     @Test
     public void luotuKorttiOlemassa() {
         assertTrue(kortti!=null);      
+    }
+    
+    @Test
+    public void kortinSaldoAlussaOikein() {
+        assertEquals("saldo: 10.0", kortti.toString());
     }
 }
