@@ -6,4 +6,6 @@
 
 [gitlog.txt](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/laskarit/viikko1/gitlog.txt)
 
-TESTIMUUTOS2, epäsynkro
+[Tuntikirjanpito](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/tuntikirjanpito.md)
+
+
