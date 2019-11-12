@@ -8,4 +8,15 @@ Sovelluksella on mahdollista olla useita käyttäjiä, ja sovellus tallentaa kä
 ## Käyttäjät
 Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä. Myöhemmin sovellukseen saatetaan lisätä suuremmilla oikeuksilla varustettu pääkäyttäjä.
 
+## Perusversion tarjoama toiminnallisuus
+
+### Ennen kirjautumista
+
+Listatesti:
+
+* Item 1
+* Item 2
+  * Item 2a
+  * Item 2b
+
 
