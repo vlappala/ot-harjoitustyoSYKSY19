@@ -12,11 +12,23 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 
 ### Ennen kirjautumista
 
-Listatesti:
 
-* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b
+* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
+  * Käyttäjätunnuksen pituuden pitää olla vähintään 3 merkkiä ja uniikki
+  * Käyttäjä voi kirjautua järjestelmään
+    * Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
+    * Sovellus ilmoittaa, mikäli käyttäjää ei ole olemassa
+
+* Kirjautumisen jälkeen
+  * Käyttäjä voi valita, minkälaisia laskutehtäviä haluaa suorittaa
+  * Käyttäjä voi suorittaa laskutehtäviä
+  * Käyttäjä voi kirjautua ulos sovelluksesta
+
+## Jatkokehitysideoita
+
+* Käyttäjäkohtaisten tilastojen tarkastelu
+* Mahdollisuus valita useammantyyppisiä laskutehtäviä suoritettavaksi
+  * Alussa yhteen- ja vähennyslaskut, myöhemmin ehkä kerto- ja jakolasku, potenssit, murtoluvut?
+  * Laskutoimitusten visualisointi esimerkiksi näyttämällä käyttäjälle erilaisia geometrisiä kuvioita
 
 
