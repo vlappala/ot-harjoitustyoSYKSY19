@@ -9,12 +9,12 @@ package com.mycompany.ot.arithmetix;
  *
  * @author t430
  */
-public class Main {
+public class Testiluokka {
     
-    private final String testi = "testi";
+    public String s;
     
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public Testiluokka() {
+        this.s = "testi";
     }
     
 }
