@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.ot.arithmetix;
+import com.mycompany.ot.arithmetix.ui.LoginPage;
 
 /**
  *
@@ -11,10 +12,10 @@ package com.mycompany.ot.arithmetix;
  */
 public class Main {
     
-    private final String testi = "testi";
+    
     
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        LoginPage.main(args);
     }
     
 }
