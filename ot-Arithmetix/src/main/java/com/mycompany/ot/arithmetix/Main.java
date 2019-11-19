@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.mycompany.ot.arithmetix;
-import com.mycompany.ot.arithmetix.ui.LoginPage;
+import com.mycompany.ot.arithmetix.ui.*;
+import com.mycompany.ot.arithmetix.engine.Engine;
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +17,14 @@ public class Main {
     
     
     public static void main(String[] args) {
-        LoginPage.main(args);
+        
+        Engine game = new Engine();
+        Scanner reader = new Scanner(System.in);
+        
+        TextUI UI = new TextUI(game, reader);
+        
+        UI.start();
+        // LoginPage.main(args);
     }
     
 }
