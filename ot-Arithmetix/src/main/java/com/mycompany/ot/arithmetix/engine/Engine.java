@@ -21,7 +21,7 @@ public class Engine {
         
     }
     
-    public void setUser(String name) {
+    public void createUser(String name) {
         User createdUser = new User(name);
         this.loggedInGamer = createdUser;
     }
@@ -42,8 +42,8 @@ public class Engine {
     
     public void newExercise() {
         
-        int a = random.nextInt(10)+1;
-        int b = random.nextInt(10)+1;
+        int a = random.nextInt(10) + 1;
+        int b = random.nextInt(10) + 1;
         
         this.exercise = new Exercise(a, b);
         
@@ -56,8 +56,8 @@ public class Engine {
     public boolean answerInGoodFormat(String text) {
         
         
-        for (int i = 0;i < text.length();i++) {
-            if ((int)text.charAt(i) < 48 || (int)text.charAt(i) > 57) {
+        for (int i = 0; i < text.length(); i++) {
+            if ((int) text.charAt(i) < 48 || (int) text.charAt(i) > 57) {
                 return false;
             }
         }

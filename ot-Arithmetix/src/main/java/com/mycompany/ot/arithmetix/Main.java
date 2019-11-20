@@ -21,9 +21,9 @@ public class Main {
         Engine game = new Engine();
         Scanner reader = new Scanner(System.in);
         
-        TextUI UI = new TextUI(game, reader);
+        TextUI ui = new TextUI(game, reader);
         
-        UI.start();
+        ui.start();
         // LoginPage.main(args);
     }
     

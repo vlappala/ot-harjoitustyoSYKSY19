@@ -20,7 +20,7 @@ public class Exercise {
         
         this.x = a;
         this.y = b;
-        this.correctAnswer = a+b;
+        this.correctAnswer = a + b;
         
     }
     

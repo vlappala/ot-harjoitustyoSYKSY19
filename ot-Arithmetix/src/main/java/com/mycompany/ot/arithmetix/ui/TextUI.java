@@ -39,7 +39,7 @@ public class TextUI {
                 System.out.println("Anna nimi: ");
                 String newName = this.reader.nextLine();
                 
-                this.gameEngine.setUser(newName);
+                this.gameEngine.createUser(newName);
                 
                 System.out.println("");
                 System.out.println("Tervetuloa, "+this.gameEngine.getUser().getName());
