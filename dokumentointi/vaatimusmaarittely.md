@@ -15,14 +15,14 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 
 * Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
   * Käyttäjätunnuksen pituuden pitää olla vähintään 3 merkkiä ja uniikki
-  * Käyttäjä voi kirjautua järjestelmään
+  * TEHTY Käyttäjä voi kirjautua järjestelmään 
     * Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
     * Sovellus ilmoittaa, mikäli käyttäjää ei ole olemassa
 
 * Kirjautumisen jälkeen
   * Käyttäjä voi valita, minkälaisia laskutehtäviä haluaa suorittaa
-  * Käyttäjä voi suorittaa laskutehtäviä
-  * Käyttäjä voi kirjautua ulos sovelluksesta
+  * TEHTY Käyttäjä voi suorittaa laskutehtäviä
+  * TEHTY Käyttäjä voi kirjautua ulos sovelluksesta
 
 ## Jatkokehitysideoita
 
