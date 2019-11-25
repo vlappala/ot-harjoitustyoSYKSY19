@@ -14,10 +14,14 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 
 
-maven-suorituskomento: 
+Maven-suorituskomento: 
 
     mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
 
-jacoco-testikattavuusraportti:
+Jacoco-testikattavuusraportti:
 
     mvn test jacoco:report
+    
+Checkstyle-tarkastus:
+
+    mvn jxr:jxr checkstyle:checkstyle
