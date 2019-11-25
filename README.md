@@ -11,11 +11,13 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 [Arkkitehtuurikuvaus](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/arkkitehtuuri.md)
 
 ## Komentorivitoiminnot
-_______________________________________________________________________________________________
+
 
 
 maven-suorituskomento: 
+
     mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
 
 jacoco-testikattavuusraportti:
+
     mvn test jacoco:report
