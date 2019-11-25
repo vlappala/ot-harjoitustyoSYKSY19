@@ -18,6 +18,8 @@ public class Main {
     
     public static void main(String[] args) {
         
+        Ui.main(args);
+        
         Engine game = new Engine();
         Scanner reader = new Scanner(System.in);
         

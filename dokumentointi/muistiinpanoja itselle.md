@@ -6,3 +6,11 @@ Exclude-komennot skipped_file.xml:ään:
 <suppress files="todoapp.ui.GuiHelper.java" checks="[a-zA-Z0-9]*"/>
 
 maven-suorituskomento: mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
+
+
+TODO:
+
+Syötetarkistus vastaukseen, 3 miljardia aiheutti Exceptionin, joka tais olla NumberFormatException...
+
+GUI 
+DAO
