@@ -10,6 +10,12 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 [Arkkitehtuurikuvaus](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/arkkitehtuuri.md)
 
-maven-suorituskomento: mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
+## Komentorivitoiminnot
+_______________________________________________________________________________________________
 
-jacoco: mvn test jacoco:report
+
+maven-suorituskomento: 
+    mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
+
+jacoco-testikattavuusraportti:
+    mvn test jacoco:report
