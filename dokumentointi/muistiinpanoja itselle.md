@@ -15,8 +15,8 @@ Syötetarkistus vastaukseen, 3 miljardia aiheutti Exceptionin, joka tais olla Nu
 GUI 
 DAO
 
-[Markdown-ohje:] (https://guides.github.com/features/mastering-markdown/)
+[Markdown-ohje:](https://guides.github.com/features/mastering-markdown/)
 
-[JavaFX-ohje:] (http://tutorials.jenkov.com/javafx/your-first-javafx-application.html)
+[JavaFX-ohje:](http://tutorials.jenkov.com/javafx/your-first-javafx-application.html)
 
-[H2-Downloads:] (http://www.h2database.com/html/download.html)
+[H2-Downloads:](http://www.h2database.com/html/download.html)
