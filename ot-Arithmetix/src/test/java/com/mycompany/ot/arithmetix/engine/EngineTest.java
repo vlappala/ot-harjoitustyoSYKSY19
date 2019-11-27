@@ -5,6 +5,8 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
+import com.mycompany.ot.arithmetix.dao.Dao;
+import com.mycompany.ot.arithmetix.dao.UserDao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +36,8 @@ public class EngineTest {
     
     @Before
     public void setUp() {
-        this.engine = new Engine();
+        UserDao x = new UserDao();
+        this.engine = new Engine(x);
     }
     
     @After

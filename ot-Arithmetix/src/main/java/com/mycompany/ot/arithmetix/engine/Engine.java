@@ -5,6 +5,8 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
+import com.mycompany.ot.arithmetix.dao.*;
+import java.sql.SQLException;
 import java.util.Random;
 
 /**
@@ -16,14 +18,43 @@ public class Engine {
     private User loggedInGamer;
     private Random random = new Random();
     private Exercise exercise;
+    private UserDao userDao;
     
-    public Engine() {
+    public Engine(UserDao createdUserDao) {
+        
+        this.userDao = createdUserDao;
+        this.userDao.createTablesIfNotExist();
+        
+        
         
     }
     
-    public void createUser(String name) {
+
+    
+//    public void setUserDao(Dao dao) {
+//        this.userDao = dao;
+//    }
+    
+    public void loginUser(String name) throws SQLException{
+        
+               
+//        if (this.userDao.read(name) != null) {
+
+            this.loggedInGamer = this.userDao.read(name);
+//            return;
+//        }
+        
+    }
+    
+    public void createUser(String name) throws SQLException{
+        
+        
         User createdUser = new User(name);
+
+        this.userDao.create(createdUser);
         this.loggedInGamer = createdUser;
+
+        
     }
     
     public boolean hasUser() {
@@ -51,6 +82,10 @@ public class Engine {
     
     public Exercise getExercise() {
         return this.exercise;
+    }
+    
+    public Dao getUserDao() {
+        return this.userDao;
     }
     
     public boolean answerInGoodFormat(String text) {

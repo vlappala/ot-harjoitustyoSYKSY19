@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package com.mycompany.ot.arithmetix.ui;
-import com.mycompany.ot.arithmetix.engine.Engine;
+import com.mycompany.ot.arithmetix.engine.*;
 import java.util.Scanner;
+import com.mycompany.ot.arithmetix.dao.*;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,11 +17,48 @@ public class TextUI {
     
     private Engine gameEngine;
     private Scanner reader;
+    private String loggedInUserName;
+//    private Dao daoToEngine;
+
     
-    public TextUI(Engine engine, Scanner keyboardReader) {
+    public TextUI(Scanner keyboardReader) {
         
-        this.gameEngine = engine;
+        UserDao taotao = new UserDao();
+        this.loggedInUserName = "";
+        
+        
+//        daoToEngine.createTablesIfNotExist();
+        this.gameEngine = new Engine(taotao);
+        
+        
         this.reader = keyboardReader;
+        
+    }
+    
+    public static void errorMessageWhenCreatingUser() {
+        System.out.println("Käyttäjä on jo olemassa, anna uusi!");
+    }
+    
+    private void loginScreen() {
+        
+        System.out.println("Anna nimi: ");
+        String newName = this.reader.nextLine();
+        
+        try {
+            
+            this.gameEngine.loginUser(newName);
+        }
+//        catch (Exception e) {
+//            System.out.println("Käyttäjää ei löytynyt! Luodaan uusi käyttäjä nimellä "+newName);
+//            
+//            try {
+//                this.gameEngine.createUser(newName);
+//            }
+//            catch (Exception f) {
+//                System.out.println("Käyttäjää ei voitu luoda!");
+//            }
+//            
+//        }
         
     }
     
@@ -27,24 +66,39 @@ public class TextUI {
         
         while (true) {
             
+            System.out.println("Tervetuloa pelaamaan"+", "+this.loggedInUserName+"! Valitse seuraavista vaihtoehdoista! ");
+            System.out.println("Päästäksesi pelaamaan, tulee sinun olla kirjautunut sisään tai uusi käyttäjä!");
+            System.out.println("");
             
-            System.out.println("Numero 1 luo uuden käyttäjän");
-            System.out.println("Numero 2 aloittaa pelaamisen");
-            System.out.println("Numero 0 lopettaa");
+            System.out.println("1: Kirjaudu sisään tai luo uusi käyttäjä");
+            System.out.println("2: aloittaa pelaamisen");
+            System.out.println("0: lopettaa");
             System.out.println("Anna komento: ");
             String command = this.reader.nextLine();
             
             if (command.equals("1")) {
                 
-                System.out.println("Anna nimi: ");
-                String newName = this.reader.nextLine();
+                while (this.gameEngine.hasUser() == false) {
+                    loginScreen();
+                }
                 
-                this.gameEngine.createUser(newName);
+                
+//                System.out.println("Anna nimi: ");
+//                String newName = this.reader.nextLine();
+//                
+//                
+//                this.gameEngine.createUser(newName);
+//                
+//                while (this.gameEngine.hasUser() == false) {
+//                    System.out.println("Anna nimi uudelle käyttäjälle! Sen pitää olla yli kolme merkkiä pitkä eikä sitä saa olla aiemmin tallennettu järjestelmään!");
+//                    newName = this.reader.nextLine();
+//                    this.gameEngine.createUser(newName);
+//                }
                 
                 System.out.println("");
                 System.out.println("Tervetuloa, "+this.gameEngine.getUser().getName());
                 
-            } else if (command.equals("2")) {
+            } else if (command.equals("2") && this.gameEngine.hasUser() == true) {
                 
                 System.out.println("Tervetuloa pelaamaan, komento quit lopettaa!");
                 

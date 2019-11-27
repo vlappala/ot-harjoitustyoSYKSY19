@@ -13,10 +13,14 @@ TODO:
 Syötetarkistus vastaukseen, 3 miljardia aiheutti Exceptionin, joka tais olla NumberFormatException...
 
 GUI 
-DAO
+DAO, vaiheessa, LOGIN-systeemi kuntoon JA HETI!!
 
 [Markdown-ohje](https://guides.github.com/features/mastering-markdown/)
 
 [JavaFX-ohje](http://tutorials.jenkov.com/javafx/your-first-javafx-application.html)
 
 [H2-Downloads](http://www.h2database.com/html/download.html)
+
+[SQLite-ohje:](https://www.sqlitetutorial.net/sqlite-java/)
+
+
