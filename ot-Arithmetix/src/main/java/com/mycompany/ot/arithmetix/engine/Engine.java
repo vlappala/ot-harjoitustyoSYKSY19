@@ -7,6 +7,8 @@ package com.mycompany.ot.arithmetix.engine;
 
 import com.mycompany.ot.arithmetix.dao.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -20,7 +22,11 @@ public class Engine {
     private Exercise exercise;
     private UserDao userDao;
     
+    private ArrayList<User> users;
+    
     public Engine(UserDao createdUserDao) {
+        
+        this.users = new ArrayList<>();
         
         this.userDao = createdUserDao;
         this.userDao.createTablesIfNotExist();
@@ -40,7 +46,11 @@ public class Engine {
                
 //        if (this.userDao.read(name) != null) {
 
-            this.loggedInGamer = this.userDao.read(name);
+            User u = this.userDao.read(name);
+            
+            if (u != null) {
+                this.loggedInGamer = u;
+            }
 //            return;
 //        }
         
@@ -57,6 +67,19 @@ public class Engine {
         
     }
     
+    public void getUsersFromDatabase() throws SQLException{
+        
+        
+        List<User> temp = this.userDao.list();
+
+        for (User u : temp) {
+            this.users.add(u);
+        } 
+        
+
+        
+    }
+    
     public boolean hasUser() {
         
         if (this.loggedInGamer == null) {
@@ -69,6 +92,10 @@ public class Engine {
                 
         return this.loggedInGamer;
              
+    }
+    
+    public ArrayList<User> getUserList() {
+        return this.users;
     }
     
     public void newExercise() {

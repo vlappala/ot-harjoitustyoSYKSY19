@@ -11,5 +11,6 @@ Päivämäärä | Tuntia | Kommentti
 25.11.2019 | 2,00 | Koodaamista
 27.11.2019 | 2,00 | Tietokantataistelua
 27.11.2019 | 4,00 | Tietokantataistelua
+29.11.2019 | 1,00 | Voittoja tietokantataistelussa!
 
-YHTEENSÄ: 13 tuntia
+YHTEENSÄ: 15 tuntia

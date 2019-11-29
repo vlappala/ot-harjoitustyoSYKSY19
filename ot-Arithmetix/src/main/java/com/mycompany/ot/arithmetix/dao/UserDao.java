@@ -89,7 +89,19 @@ public class UserDao implements Dao<User, String> {
 
     @Override
     public List<User> list() throws SQLException {
-	      // ei toteutettu
-	      return null;
+	
+        List<User> users = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(url);
+            ResultSet result = conn.prepareStatement("SELECT id, name FROM Task").executeQuery()) {
+
+            while (result.next()) {
+                users.add(new User(result.getString("name")));
+            }
+            conn.close();
+        }
+
+        return users;
+	      
     }
 }

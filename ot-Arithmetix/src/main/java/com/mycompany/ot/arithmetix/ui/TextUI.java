@@ -35,9 +35,9 @@ public class TextUI {
         
     }
     
-    public static void errorMessageWhenCreatingUser() {
-        System.out.println("Käyttäjä on jo olemassa, anna uusi!");
-    }
+//    public static void errorMessageWhenCreatingUser() {
+//        System.out.println("Käyttäjä on jo olemassa, anna uusi!");
+//    }
     
     private void loginScreen() {
         
@@ -48,29 +48,59 @@ public class TextUI {
             
             this.gameEngine.loginUser(newName);
         }
-//        catch (Exception e) {
-//            System.out.println("Käyttäjää ei löytynyt! Luodaan uusi käyttäjä nimellä "+newName);
-//            
-//            try {
-//                this.gameEngine.createUser(newName);
-//            }
-//            catch (Exception f) {
-//                System.out.println("Käyttäjää ei voitu luoda!");
-//            }
-//            
-//        }
+        catch (Exception e) {
+            System.out.println("SQL-virhe!");
+        }    
+        
+        if (this.gameEngine.hasUser() == false) {
+            createUserScreen(newName);
+        }
+        else {
+            System.out.println("Kirjattiin sisään käyttäjä: "+this.gameEngine.getUser().getName());
+        }
+        
+
+            
+    }
+    
+    private void createUserScreen(String newName) {
+        
+        
+        try {
+            this.gameEngine.createUser(newName);
+        }
+        catch (Exception f) {
+            System.out.println("Käyttäjää ei voitu luoda!");
+        }
+        System.out.println("Luotiin uusi käyttäjä nimellä "+newName+"!");
         
     }
+        
+    
     
     public void start() {
         
+        try {
+            this.gameEngine.getUsersFromDatabase();
+        }
+        catch (SQLException e) {
+            System.out.println("Virhe käyttäjälistan lataamisessa!");
+        }
+        
         while (true) {
             
-            System.out.println("Tervetuloa pelaamaan"+", "+this.loggedInUserName+"! Valitse seuraavista vaihtoehdoista! ");
+            if (this.gameEngine.hasUser() == true) {
+                System.out.println("Kirjautunut käyttäjä: "+this.gameEngine.getUser().getName());
+            }
+            System.out.println("Tervetuloa pelaamaan! Valitse seuraavista vaihtoehdoista! ");
             System.out.println("Päästäksesi pelaamaan, tulee sinun olla kirjautunut sisään tai uusi käyttäjä!");
             System.out.println("");
             
-            System.out.println("1: Kirjaudu sisään tai luo uusi käyttäjä");
+            if (this.gameEngine.hasUser() == false) {
+                System.out.println("1: Kirjaudu sisään tai luo uusi käyttäjä");
+            }
+            
+            
             System.out.println("2: aloittaa pelaamisen");
             System.out.println("0: lopettaa");
             System.out.println("Anna komento: ");
@@ -78,9 +108,11 @@ public class TextUI {
             
             if (command.equals("1")) {
                 
-                while (this.gameEngine.hasUser() == false) {
+                if (this.gameEngine.hasUser() == false) {
                     loginScreen();
                 }
+
+                
                 
                 
 //                System.out.println("Anna nimi: ");
@@ -95,9 +127,9 @@ public class TextUI {
 //                    this.gameEngine.createUser(newName);
 //                }
                 
-                System.out.println("");
-                System.out.println("Tervetuloa, "+this.gameEngine.getUser().getName());
-                
+//                System.out.println("");
+//                System.out.println("Tervetuloa, "+this.gameEngine.getUser().getName());
+//                
             } else if (command.equals("2") && this.gameEngine.hasUser() == true) {
                 
                 System.out.println("Tervetuloa pelaamaan, komento quit lopettaa!");
@@ -126,8 +158,8 @@ public class TextUI {
                         System.out.println("Aijai, väärä vastaus!");
                     }
                 }
-
-                
+//
+//                
             } else if (command.equals("0")) {
                 System.out.println("Heippa!");
                 break;
@@ -145,3 +177,4 @@ public class TextUI {
 //    }
     
 }
+
