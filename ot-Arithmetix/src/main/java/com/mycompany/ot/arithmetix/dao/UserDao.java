@@ -59,7 +59,7 @@ public class UserDao implements Dao<User, String> {
 
         // Mikäli tulostaulussa ei ole yhtäkään riviä,
         // palautetaan null-viite
-        if(!rs.next()) {
+        if (!rs.next()) {
             return null;
         }
 
@@ -105,7 +105,7 @@ public class UserDao implements Dao<User, String> {
         List<User> users = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(url);
-            ResultSet result = conn.prepareStatement("SELECT id, name FROM Task").executeQuery()) {
+            ResultSet result = conn.prepareStatement("SELECT * FROM Users").executeQuery()) {
 
             while (result.next()) {
                 users.add(new User(result.getString("name")));

@@ -6,7 +6,8 @@
 package com.mycompany.ot.arithmetix.engine;
 
 import com.mycompany.ot.arithmetix.dao.UserDao;
-import java.util.Random;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,6 +68,8 @@ public class EngineTest {
     // @Test
     // public void hello() {}
     
+
+    
     @Test
     public void userIsCreatedCorrectly() {
         
@@ -84,6 +87,22 @@ public class EngineTest {
     }
     
     @Test
+    public void getUserDaoWorks() {
+        
+        UserDao ud = this.engine.getUserDao();
+        
+        assertTrue(ud != null);
+    }
+    
+    @Test
+    public void createExerciseWorks() {
+        this.engine.newExercise();
+        Exercise ex = this.engine.getExercise();
+        
+        assertTrue(ex != null);
+    }
+    
+    @Test
     public void createdUserHasCorrectName() {
         
         try {
@@ -93,9 +112,55 @@ public class EngineTest {
             System.out.println("Virhe: "+e.toString());
         }
         
-        User testattava = this.engine.getUser();
         
-        assertEquals(this.engine.getUser().getName(), testiStringi);
+        
+        assertEquals(testiStringi, this.engine.getUser().getName());
         cleanTestUser();
     }
+    
+    @Test
+    public void userLogsOutCorrectly() {
+        
+        try {
+            this.engine.createUser(testiStringi);
+        }
+        catch (Exception e) {
+            System.out.println("Virhe: "+e.toString());
+        }
+        
+        this.engine.logoutUser();
+        
+        assertEquals(false, this.engine.hasUser());
+        cleanTestUser();
+    }
+    
+    @Test
+    public void getUserListWorks() {
+        
+        ArrayList<User> x = new ArrayList<>();
+        
+        try {
+            this.engine.getUsersFromDatabase();
+            x = this.engine.getUserList();
+        }
+        catch (SQLException e) {
+            System.out.println("Virhe käyttäjälistan lataamisessa!");
+        }
+        
+        assertEquals(x, this.engine.getUserList());
+
+    }
+    
+//    @Test
+//    public void userIsDeletedCorrectly() {
+//        try {
+//            this.engine.createUser(testiStringi);
+//            this.engine.deleteUser(testiStringi);
+//        }
+//        catch (Exception e) {
+//            System.out.println("Virhe testikäyttäjän poistamisessa!");
+//        }
+//        
+//        assertEquals(this.engine.hasUser(), false);
+//    }
 }

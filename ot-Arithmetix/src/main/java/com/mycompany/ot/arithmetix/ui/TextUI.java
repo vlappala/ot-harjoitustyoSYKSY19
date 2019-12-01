@@ -108,6 +108,7 @@ public class TextUI {
             if (this.gameEngine.hasUser() == true) {
                 System.out.println("4: Poista käyttäjä: "+this.gameEngine.getUser().getName());
             }
+            System.out.println("99: Listaa käyttäjät");
             System.out.println("0: Lopeta");
             System.out.println("Anna komento: ");
             String command = this.reader.nextLine();
@@ -178,6 +179,11 @@ public class TextUI {
                 }
                 catch (Exception e) {
                     System.out.println("Virhe käyttäjän tuhoamisessa: "+e.toString());
+                }
+            } else if (command.equals("99")) {
+                System.out.println("Käyttäjät: ");
+                for (User u : this.gameEngine.getUserList()) {
+                    System.out.println(u.getName());
                 }
             }
             

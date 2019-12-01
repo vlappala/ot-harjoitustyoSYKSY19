@@ -3,25 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.ot.arithmetix;
+package com.mycompany.ot.arithmetix.engine;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author t430
  */
-public class TestiluokkaTest {
+public class ExerciseTest {
     
-    Testiluokka testattava;
+    private Random randomi;
     
-    public TestiluokkaTest() {
-        testattava = new Testiluokka();
+    public ExerciseTest() {
+        this.randomi = new Random();
     }
     
     @BeforeClass
@@ -47,8 +48,24 @@ public class TestiluokkaTest {
     // public void hello() {}
     
     @Test
-    public void tekstiOikein() {
+    public void exerciseHasCorrectTerms(){
         
-        assertEquals("testi", testattava.s);
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        Exercise ex = new Exercise(z, w);
+        
+        assertEquals(ex.getX(), z);
+        assertEquals(ex.getY(), w);
+    }
+    
+    @Test
+    public void exerciseHasCorrectAnswer() {
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        Exercise ex = new Exercise(z, w);
+        
+        assertEquals(ex.getAnswer(), z+w);
     }
 }

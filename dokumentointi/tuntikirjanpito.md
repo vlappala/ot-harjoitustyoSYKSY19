@@ -13,5 +13,6 @@ Päivämäärä | Tuntia | Kommentti
 27.11.2019 | 4,00 | Tietokantataistelua
 29.11.2019 | 1,00 | Voittoja tietokantataistelussa!
 1.12.2019 | 1,00 | Tietokantataistelua
+1.12.2019 | 1,00 | Testikattavuudet ja Checkstylet kondikseen palautusta silmälläpitäen
 
-YHTEENSÄ: 16 tuntia
+YHTEENSÄ: 17 tuntia

@@ -41,22 +41,22 @@ public class Engine {
 //        this.userDao = dao;
 //    }
     
-    public void loginUser(String name) throws SQLException{
+    public void loginUser(String name) throws SQLException {
         
                
 //        if (this.userDao.read(name) != null) {
 
-            User u = this.userDao.read(name);
-            
-            if (u != null) {
-                this.loggedInGamer = u;
-            }
+        User u = this.userDao.read(name);
+
+        if (u != null) {
+            this.loggedInGamer = u;
+        }
 //            return;
 //        }
         
     }
     
-    public void createUser(String name) throws SQLException{
+    public void createUser(String name) throws SQLException {
         
         
         User createdUser = new User(name);
@@ -67,13 +67,13 @@ public class Engine {
         
     }
     
-    public void deleteUser(String name) throws SQLException{
+    public void deleteUser(String name) throws SQLException {
         
         this.userDao.delete(name);
         
     }
     
-    public void getUsersFromDatabase() throws SQLException{
+    public void getUsersFromDatabase() throws SQLException {
         
         
         List<User> temp = this.userDao.list();
@@ -81,9 +81,7 @@ public class Engine {
         for (User u : temp) {
             this.users.add(u);
         } 
-        
-
-        
+      
     }
     
     public boolean hasUser() {
@@ -121,7 +119,7 @@ public class Engine {
         return this.exercise;
     }
     
-    public Dao getUserDao() {
+    public UserDao getUserDao() {
         return this.userDao;
     }
     
