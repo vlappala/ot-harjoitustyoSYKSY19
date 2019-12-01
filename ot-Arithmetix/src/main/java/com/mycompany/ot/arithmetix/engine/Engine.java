@@ -67,6 +67,12 @@ public class Engine {
         
     }
     
+    public void deleteUser(String name) throws SQLException{
+        
+        this.userDao.delete(name);
+        
+    }
+    
     public void getUsersFromDatabase() throws SQLException{
         
         
@@ -92,6 +98,10 @@ public class Engine {
                 
         return this.loggedInGamer;
              
+    }
+    
+    public void logoutUser() {
+        this.loggedInGamer = null;
     }
     
     public ArrayList<User> getUserList() {

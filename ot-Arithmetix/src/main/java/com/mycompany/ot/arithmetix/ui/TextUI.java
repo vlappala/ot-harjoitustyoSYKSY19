@@ -102,7 +102,13 @@ public class TextUI {
             
             
             System.out.println("2: aloittaa pelaamisen");
-            System.out.println("0: lopettaa");
+            if (this.gameEngine.hasUser() == true) {
+                System.out.println("3: Kirjaudu ulos ");
+            }
+            if (this.gameEngine.hasUser() == true) {
+                System.out.println("4: Poista käyttäjä: "+this.gameEngine.getUser().getName());
+            }
+            System.out.println("0: Lopeta");
             System.out.println("Anna komento: ");
             String command = this.reader.nextLine();
             
@@ -160,10 +166,27 @@ public class TextUI {
                 }
 //
 //                
-            } else if (command.equals("0")) {
+            } else if (command.equals("3") && this.gameEngine.hasUser() == true) {
+                this.gameEngine.logoutUser();
+            } else if (command.equals("4") && this.gameEngine.hasUser() == true) {
+                
+                try {
+                    
+                    this.gameEngine.deleteUser(this.gameEngine.getUser().getName());
+                    this.gameEngine.logoutUser();
+                    
+                }
+                catch (Exception e) {
+                    System.out.println("Virhe käyttäjän tuhoamisessa: "+e.toString());
+                }
+            }
+            
+            else if (command.equals("0")) {
                 System.out.println("Heippa!");
                 break;
             }
+            
+            
             
         }
         

@@ -51,7 +51,6 @@ public class UserDao implements Dao<User, String> {
     @Override
     public User read(String key) throws SQLException {
         
-
         Connection connection = DriverManager.getConnection(url);
 
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Users WHERE name = ?");
@@ -85,6 +84,19 @@ public class UserDao implements Dao<User, String> {
     @Override
     public void delete(String key) throws SQLException {
         // ei toteutettu
+        
+        Connection connection = DriverManager.getConnection(url);
+
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM Users WHERE name = ?");
+        stmt.setString(1, key);
+        stmt.executeUpdate();
+                
+
+ 
+        stmt.close();
+        
+        connection.close();
+
     }
 
     @Override

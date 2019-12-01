@@ -5,8 +5,8 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
-import com.mycompany.ot.arithmetix.dao.Dao;
 import com.mycompany.ot.arithmetix.dao.UserDao;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,6 +23,8 @@ public class EngineTest {
     Engine engine;
     String testiStringi = "xyxy1010";
     
+    
+    
     public EngineTest() {
     }
     
@@ -38,6 +40,21 @@ public class EngineTest {
     public void setUp() {
         UserDao x = new UserDao();
         this.engine = new Engine(x);
+        cleanTestUser();
+        
+        
+
+    }
+    
+    public void cleanTestUser() {
+        
+        try {
+            this.engine.deleteUser(testiStringi);
+        }
+        catch (Exception e) {
+            System.out.println("Virhe testikäyttäjän poistamisessa!");
+        }
+        
     }
     
     @After
@@ -52,10 +69,33 @@ public class EngineTest {
     
     @Test
     public void userIsCreatedCorrectly() {
-        this.engine.createUser(testiStringi);
+        
+        try {
+            this.engine.createUser(testiStringi);
+        }
+        catch (Exception e) {
+            System.out.println("Virhe: "+e.toString());
+        }
         
         User testattava = this.engine.getUser();
         
         assertTrue(testattava!=null);
+        cleanTestUser();
+    }
+    
+    @Test
+    public void createdUserHasCorrectName() {
+        
+        try {
+            this.engine.createUser(testiStringi);
+        }
+        catch (Exception e) {
+            System.out.println("Virhe: "+e.toString());
+        }
+        
+        User testattava = this.engine.getUser();
+        
+        assertEquals(this.engine.getUser().getName(), testiStringi);
+        cleanTestUser();
     }
 }
