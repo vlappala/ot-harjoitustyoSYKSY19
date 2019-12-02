@@ -4,7 +4,7 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 ## Releaset
 
-[Viikon 5 Release: ](https://github.com/vlappala/ot-harjoitustyoSYKSY19/releases/tag/viikko5)
+[Viikon 5 Release](https://github.com/vlappala/ot-harjoitustyoSYKSY19/releases/tag/viikko5)
 
 ## Dokumentaatio
 
