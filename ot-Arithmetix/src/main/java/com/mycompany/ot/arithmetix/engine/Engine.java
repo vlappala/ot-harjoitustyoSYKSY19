@@ -125,6 +125,10 @@ public class Engine {
     
     public boolean answerInGoodFormat(String text) {
         
+        if (text.length() > 6 || text.length() == 0) {
+            return false;
+        }
+        
         
         for (int i = 0; i < text.length(); i++) {
             if ((int) text.charAt(i) < 48 || (int) text.charAt(i) > 57) {

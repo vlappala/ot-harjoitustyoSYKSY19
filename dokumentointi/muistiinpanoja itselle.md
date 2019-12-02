@@ -23,4 +23,9 @@ DAO, vaiheessa, LOGIN-systeemi kuntoon JA HETI!!
 
 [SQLite-ohje:](https://www.sqlitetutorial.net/sqlite-java/)
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+        </dependency>
 
