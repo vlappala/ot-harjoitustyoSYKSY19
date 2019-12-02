@@ -2,6 +2,10 @@
 
 Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
+## Releaset
+
+[Viikon 5 Release: ](https://github.com/vlappala/ot-harjoitustyoSYKSY19/releases/tag/viikko5)
+
 ## Dokumentaatio
 
 [Tuntikirjanpito](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/tuntikirjanpito.md)
@@ -17,6 +21,10 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 Maven-suorituskomento: 
 
     mvn compile exec:java -Dexec.mainClass=com.mycompany.ot.arithmetix.Main
+    
+Maven-testauskomento:
+
+    mvn test
 
 Jacoco-testikattavuusraportti:
 
@@ -25,3 +33,7 @@ Jacoco-testikattavuusraportti:
 Checkstyle-tarkastus:
 
     mvn jxr:jxr checkstyle:checkstyle
+
+Suoritettavan jarin generointi
+
+    mvn package

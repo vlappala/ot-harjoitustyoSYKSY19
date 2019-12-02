@@ -181,10 +181,19 @@ public class TextUI {
                     System.out.println("Virhe käyttäjän tuhoamisessa: "+e.toString());
                 }
             } else if (command.equals("99")) {
+                
+                try {
+                    this.gameEngine.getUsersFromDatabase();
+                }
+                catch (SQLException e) {
+                    System.out.println("Virhe käyttäjälistan hakemisessa tietokannasta: "+e.toString());
+                }
+                System.out.println("");
                 System.out.println("Käyttäjät: ");
                 for (User u : this.gameEngine.getUserList()) {
                     System.out.println(u.getName());
                 }
+                System.out.println("");
             }
             
             else if (command.equals("0")) {

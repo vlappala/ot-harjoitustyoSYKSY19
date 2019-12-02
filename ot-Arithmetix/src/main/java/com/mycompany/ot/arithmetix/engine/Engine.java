@@ -76,8 +76,9 @@ public class Engine {
     public void getUsersFromDatabase() throws SQLException {
         
         
+        this.users.clear();
         List<User> temp = this.userDao.list();
-
+        
         for (User u : temp) {
             this.users.add(u);
         } 
