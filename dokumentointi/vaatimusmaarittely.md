@@ -10,16 +10,19 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
 
 ## Perusversion tarjoama toiminnallisuus
 
+*  EI TEHTY VIELÄ: Graafinen käyttöliittymä
+
 ### Ennen kirjautumista
 
 
-* Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
+* TEHTY Käyttäjä voi luoda järjestelmään käyttäjätunnuksen
   * Käyttäjätunnuksen pituuden pitää olla vähintään 3 merkkiä ja uniikki
   * TEHTY Käyttäjä voi kirjautua järjestelmään 
     * TEHTY Sovellus käyttää sqlite-tietokantaa käyttäjien hallintaan
       * TEHTY Kirjautuminen onnistuu syötettäessä olemassaoleva käyttäjätunnus kirjautumislomakkeelle
       * TEHTY Sovellus ilmoittaa, mikäli käyttäjää ei ole olemassa tietokannassa
       * TEHTY Mikäli käyttäjää ei ole olemassa, luodaan uusi käyttäjä ja tallennetaan se tietokantaan
+    * TEHTY Sovellus käyttää tietokantaa myös tehtyjen harjoitusten hallintaan
 
 * Kirjautumisen jälkeen
   * Käyttäjä voi valita, minkälaisia laskutehtäviä haluaa suorittaa
@@ -28,10 +31,13 @@ Alkuvaiheessa sovelluksella on ainoastaan yksi käyttäjärooli eli normaali kä
   * TEHTY Käyttäjä voi poistaa käyttäjätiedot tietokannasta
   * TEHTY Käyttäjä voi listata kaikki käytössä olevat käyttäjätunnukest
     * Tämä ominaisuus täytyy ehkä viimeisestä versiosta poistaa
+  * TEHTY Sovellus ottaa aikaa suorituksesta
+  * TEHTY Suoritukset viedään tietokantaan
+  * TEHTY Käyttäjä voi listata omat suorituksensa
 
 ## Jatkokehitysideoita
 
-* Käyttäjäkohtaisten tilastojen tarkastelu
+* OSAKSI TEHTY 4.12., KÄYTTÄJÄ VOI LISTATA OMAT SUORITUKSENSA Käyttäjäkohtaisten tilastojen tarkastelu
 * Mahdollisuus valita useammantyyppisiä laskutehtäviä suoritettavaksi
   * Alussa yhteen- ja vähennyslaskut, myöhemmin ehkä kerto- ja jakolasku, potenssit, murtoluvut?
   * Laskutoimitusten visualisointi esimerkiksi näyttämällä käyttäjälle erilaisia geometrisiä kuvioita

@@ -6,7 +6,13 @@ import com.mycompany.ot.arithmetix.engine.User;
 
 public class UserDao implements Dao<User, String> {
     
-    String url = "jdbc:sqlite:./testidata.db";
+    String url;  // "jdbc:sqlite:./testidata.db";
+    
+    public UserDao(String dbAddress) {
+        
+        this.url = "jdbc:sqlite:./"+dbAddress;
+        
+    }
     
     public void createTablesIfNotExist() {
         

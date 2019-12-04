@@ -7,7 +7,10 @@ package com.mycompany.ot.arithmetix.ui;
 import com.mycompany.ot.arithmetix.engine.*;
 import java.util.Scanner;
 import com.mycompany.ot.arithmetix.dao.*;
+import java.io.FileInputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Properties;
 
 /**
  *
@@ -23,12 +26,24 @@ public class TextUI {
     
     public TextUI(Scanner keyboardReader) {
         
-        UserDao taotao = new UserDao();
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        }
+        catch (Exception e) {
+            System.out.println("Virhe konfiguraatiotiedoston lataamisessa: "+e.toString());
+        }
+    
+        String dbAddress = properties.getProperty("dbFile");
+        
+        UserDao taotao = new UserDao(dbAddress);
+        ExerciseDao daodao = new ExerciseDao(dbAddress);
         this.loggedInUserName = "";
         
         
 //        daoToEngine.createTablesIfNotExist();
-        this.gameEngine = new Engine(taotao);
+        this.gameEngine = new Engine(taotao, daodao);
         
         
         this.reader = keyboardReader;
@@ -108,6 +123,9 @@ public class TextUI {
             if (this.gameEngine.hasUser() == true) {
                 System.out.println("4: Poista käyttäjä: "+this.gameEngine.getUser().getName());
             }
+            if (this.gameEngine.hasUser() == true) {
+                System.out.println("88: Listaa tehdyt tehtävät: ");
+            }
             System.out.println("99: Listaa käyttäjät");
             System.out.println("0: Lopeta");
             System.out.println("Anna komento: ");
@@ -147,8 +165,11 @@ public class TextUI {
                 
                     System.out.println("");
                     System.out.println("Tehtävä: "+this.gameEngine.getExercise().getX()+" + "+this.gameEngine.getExercise().getY()+": ");
+                    double time1 = System.currentTimeMillis();
                     
                     String answer = this.reader.nextLine();
+                    
+                    
                     
                     while (!answer.equals("quit") && !this.gameEngine.answerInGoodFormat(answer)) {
                         System.out.println("Vastaus on muotoiltu huonosti, yritä uudelleen!");
@@ -160,9 +181,36 @@ public class TextUI {
                     if (answer.equals("quit")) {
                         break;
                     } else if (Integer.parseInt(answer) == this.gameEngine.getExercise().getAnswer()) {
+                        
+                        double time2 = System.currentTimeMillis();
+                        
+                        double time3 = time2-time1;
+                                
                         System.out.println("Oikea vastaus, hienoa!");
+                        this.gameEngine.getExercise().setCorrect(true);
+                        this.gameEngine.getExercise().setTime(time3/1000);
+                        try {
+                            this.gameEngine.getExerciseDao().create(this.gameEngine.getExercise(), this.gameEngine.getUser());
+                        }
+                        catch (Exception e) {
+                            System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
+                        }
                     } else {
+                        
+                        double time2 = System.currentTimeMillis();
+                        
+                        double time3 = time2-time1;
+                        
                         System.out.println("Aijai, väärä vastaus!");
+                        
+                        this.gameEngine.getExercise().setCorrect(false);
+                        this.gameEngine.getExercise().setTime(time3/1000);
+                        try {
+                            this.gameEngine.getExerciseDao().create(this.gameEngine.getExercise(), this.gameEngine.getUser());
+                        }
+                        catch (Exception e) {
+                            System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
+                        }
                     }
                 }
 //
@@ -179,6 +227,17 @@ public class TextUI {
                 }
                 catch (Exception e) {
                     System.out.println("Virhe käyttäjän tuhoamisessa: "+e.toString());
+                }
+            } else if (command.equals("88") && this.gameEngine.hasUser() == true) {
+                try {
+                    ArrayList<Exercise> completedEx = this.gameEngine.getExerciseDao().list(this.gameEngine.getUser());
+                    
+                    for (Exercise e : completedEx) {
+                        System.out.println(""+this.gameEngine.getUser().getName()+" "+e);
+                    }
+                }
+                catch (Exception e) {
+                    System.out.println("Virhe tehtävälistan hakemisessa: "+e.toString());
                 }
             } else if (command.equals("99")) {
                 

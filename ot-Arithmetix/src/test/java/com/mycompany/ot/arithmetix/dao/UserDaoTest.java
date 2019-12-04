@@ -5,6 +5,8 @@
  */
 package com.mycompany.ot.arithmetix.dao;
 
+import java.io.FileInputStream;
+import java.util.Properties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +36,20 @@ public class UserDaoTest {
     @Before
     public void setUp() {
         
-        this.ud = new UserDao();
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        }
+        catch (Exception e) {
+            System.out.println("Virhe konfiguraatiotiedoston lataamisessa: "+e.toString());
+        }
+    
+        String dbAddress = properties.getProperty("dbFile");
+        
+        this.ud = new UserDao(dbAddress);
+        
+         
     }
     
     @After

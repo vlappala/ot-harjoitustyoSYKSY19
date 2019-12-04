@@ -14,4 +14,5 @@
 | 1.12.2019 | 1,00 | Tietokantataistelua |
 | 1.12.2019 | 1,00 | Testikattavuudet ja Checkstylet kondikseen palautusta silmälläpitäen |
 | 2.12.2019 | 2,00 | Viikon 5 palautuksen hiominen, suoritettava Jar ja ensimmäinen Release! |
-| YHTEENSÄ | 19 tuntia | |
+| 4.12.2019 | 4,00 | Ominaisuuksia lisää: Harjoitukset ajastettu ja viedään tietokantaan, voi listata omat harjoitukset! Koodi rumaa ja suttuista, argh. |
+| YHTEENSÄ | 23 tuntia | |

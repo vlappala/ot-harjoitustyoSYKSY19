@@ -5,9 +5,12 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
+import com.mycompany.ot.arithmetix.dao.ExerciseDao;
 import com.mycompany.ot.arithmetix.dao.UserDao;
+import java.io.FileInputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,8 +42,22 @@ public class EngineTest {
     
     @Before
     public void setUp() {
-        UserDao x = new UserDao();
-        this.engine = new Engine(x);
+        
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        }
+        catch (Exception e) {
+            System.out.println("Virhe konfiguraatiotiedoston lataamisessa: "+e.toString());
+        }
+    
+        String dbAddress = properties.getProperty("dbFile");
+        
+        UserDao x = new UserDao(dbAddress);
+        
+        
+        this.engine = new Engine(x, new ExerciseDao(dbAddress));
         cleanTestUser();
         
         

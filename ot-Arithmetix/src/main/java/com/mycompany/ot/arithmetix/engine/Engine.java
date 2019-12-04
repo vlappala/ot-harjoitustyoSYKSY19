@@ -21,16 +21,19 @@ public class Engine {
     private Random random = new Random();
     private Exercise exercise;
     private UserDao userDao;
+    private ExerciseDao exerciseDao;
     
     private ArrayList<User> users;
     
-    public Engine(UserDao createdUserDao) {
+    public Engine(UserDao createdUserDao, ExerciseDao createdExerciseDao) {
         
         this.users = new ArrayList<>();
         
         this.userDao = createdUserDao;
         this.userDao.createTablesIfNotExist();
         
+        this.exerciseDao = createdExerciseDao;
+        this.exerciseDao.createTablesIfNotExist();
         
         
     }
@@ -122,6 +125,10 @@ public class Engine {
     
     public UserDao getUserDao() {
         return this.userDao;
+    }
+    
+    public ExerciseDao getExerciseDao() {
+        return this.exerciseDao;
     }
     
     public boolean answerInGoodFormat(String text) {
