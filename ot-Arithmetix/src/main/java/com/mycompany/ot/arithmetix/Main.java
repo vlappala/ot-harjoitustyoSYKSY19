@@ -44,14 +44,14 @@ public class Main {
         
         
 //        Engine game = new Engine();
-        Scanner reader = new Scanner(System.in);
-        
-        TextUI ui = new TextUI(reader);
-        
-        ui.start();
+//        Scanner reader = new Scanner(System.in);
+//        
+//        TextUI ui = new TextUI(reader);
+//        
+//        ui.start();
         // LoginPage.main(args);
         
-//        Ui.main(args);
+        Ui.main(args);
     }
     
 }

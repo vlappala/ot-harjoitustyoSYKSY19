@@ -15,4 +15,5 @@
 | 1.12.2019 | 1,00 | Testikattavuudet ja Checkstylet kondikseen palautusta silmälläpitäen |
 | 2.12.2019 | 2,00 | Viikon 5 palautuksen hiominen, suoritettava Jar ja ensimmäinen Release! |
 | 4.12.2019 | 4,00 | Ominaisuuksia lisää: Harjoitukset ajastettu ja viedään tietokantaan, voi listata omat harjoitukset! Koodi rumaa ja suttuista, argh. |
-| YHTEENSÄ | 23 tuntia | |
+| 5.12.2019 | 2,00 | GUI aloitettu! Voi logata sisään jo GUIn kautta ja käyttäjätunnus tallentuu kantaan! |
+| YHTEENSÄ | 25 tuntia | |
