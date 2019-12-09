@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  */
 public class Ui extends Application {
     
-    private Scene todoScene;
+    private Scene gameScene;
     private Scene newUserScene;
     private Scene loginScene;
     private Scene menuScene;
@@ -37,7 +37,9 @@ public class Ui extends Application {
     private Stage testStage;
     
     private Engine gameEngine;
-    private String loggedInUserName;
+//    private String loggedInUserName;
+    
+    private boolean newUser;
     
     
     
@@ -88,11 +90,16 @@ public class Ui extends Application {
                     }
                     
                     if (this.gameEngine.hasUser()) {
+//                        this.loggedInUserName = this.gameEngine.getUser().getName();
+                        this.newUser = true;
+                        createMenuScene();
                         this.testStage.setScene(menuScene);
                         this.testStage.show();
                     }
                     
                 } else {
+//                    this.loggedInUserName = this.gameEngine.getUser().getName();
+                    createMenuScene();
                     this.testStage.setScene(menuScene);
                     this.testStage.show();
                 }
@@ -120,23 +127,165 @@ public class Ui extends Application {
         Label loginLabel = new Label("Käyttäjätunnus: ");
         TextField usernameInput = new TextField();
         
-        inputPane.getChildren().addAll(loginLabel, usernameInput);
+        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
+        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
+        
+        String greetingTemplate = "";
+        
+        if (this.newUser) {
+            greetingTemplate += welcomeMessageNewUser;
+            this.newUser = false;
+        }
+        else {
+            greetingTemplate += welcomeMessageExistingUser;
+        }
+        
+        
         Label loginMessage = new Label();
         
-        loginMessage.setText("MENU!");
         
-        Button loginButton = new Button("Kirjaudu sisään tai luo uusi käyttäjä");
+        loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
+        
+        Button logoutButton = new Button("Kirjaudu ulos");
 //        Button createButton = new Button("create new user");
 
-        loginButton.setOnAction(e->{
+        logoutButton.setOnAction(e->{
+            
+            this.gameEngine.logoutUser();
+            createLoginScene();
+            
             this.testStage.setScene(loginScene);
             this.testStage.show();
         });
         
-        loginPane.getChildren().addAll(loginMessage, inputPane, loginButton);
+        Button gameButton = new Button("Aloita pelaaminen!");
+//        Button createButton = new Button("create new user");
+
+        gameButton.setOnAction(e->{
+            
+//            System.out.println("JAHAS!");
+            createGameScene();
+            
+            this.testStage.setScene(gameScene);
+//            this.gameEngine.newExercise();
+            this.testStage.show();
+        });
+        
+        inputPane.getChildren().addAll(gameButton, logoutButton);
+        loginPane.getChildren().addAll(loginMessage, inputPane);
         
         
         menuScene = new Scene(loginPane, 600, 250);
+    }
+    
+    private void createGameScene() {
+        
+        // Kopsattua käliä:
+        
+        VBox loginPane = new VBox(10);
+        HBox inputPane = new HBox(10);
+        loginPane.setPadding(new Insets(10));
+        
+        this.gameEngine.newExercise();
+        
+        Label questionLabel = new Label(""+this.gameEngine.getExercise().getX()
+                +" "+this.gameEngine.getExercise().getOperation()
+                +" "+this.gameEngine.getExercise().getY()+"?");
+//        Label loginLabel = new Label("Käyttäjätunnus: ");
+//        TextField usernameInput = new TextField();
+//        
+//        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
+//        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
+
+        Label answerLabel = new Label("Vastaus: ");
+        TextField answerInput = new TextField();
+        
+        inputPane.getChildren().addAll(questionLabel, answerLabel, answerInput);
+        
+        String greetingTemplate = "";
+        
+//        if (this.newUser) {
+//            greetingTemplate += welcomeMessageNewUser;
+//            this.newUser = false;
+//        }
+//        else {
+//            greetingTemplate += welcomeMessageExistingUser;
+//        }
+        
+        
+        Label gameMessage = new Label();
+        
+        
+        gameMessage.setText("PELI!");
+        
+        Button menuButton = new Button("Takaisin valikkoon");
+//        Button createButton = new Button("create new user");
+
+        menuButton.setOnAction(e->{
+            
+//            this.gameEngine.logoutUser();
+//            createLoginScene();
+            
+            this.testStage.setScene(menuScene);
+            this.testStage.show();
+        });
+        
+        Button answerButton = new Button("Vastaa!");
+//        Button createButton = new Button("create new user");
+
+        answerButton.setOnAction(e->{
+            
+            if (!this.gameEngine.answerInGoodFormat(answerInput.getText())) {
+                gameMessage.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
+            } else if (Integer.parseInt(answerInput.getText()) == this.gameEngine.getExercise().getAnswer()) {
+                
+                // ... oikea vastaus
+                
+                // AJASTUSFUNKTIO ENGINEEN!!!
+                
+                // TIETOKANTAYHTEYS KONDIKSEEN!
+                
+                // TIETOKANTAOPERAATION SUORITUSKOMENTO ENGINEN VASTAUKSENTARKASTAJALLE?
+                
+                // ENTTERINKUUNTELU TEKSTIKENTILLE?
+                
+                gameMessage.setText("Oikea vastaus, huraa!");
+                
+                this.gameEngine.newExercise();
+                
+                questionLabel.setText(""+this.gameEngine.getExercise().getX()
+                +" "+this.gameEngine.getExercise().getOperation()
+                +" "+this.gameEngine.getExercise().getY()+"?");
+                
+                answerInput.clear();
+            } else {
+                // Väärä vastaus
+                
+                gameMessage.setText("Aijai, väärä vastaus!");
+                
+//                createGameScene();
+                
+                this.gameEngine.newExercise();
+                
+                questionLabel.setText(""+this.gameEngine.getExercise().getX()
+                +" "+this.gameEngine.getExercise().getOperation()
+                +" "+this.gameEngine.getExercise().getY()+"?");
+                
+                answerInput.clear();
+            }
+            
+//            this.gameEngine.logoutUser();
+//            createLoginScene();
+//            
+//            this.testStage.setScene(loginScene);
+//            this.testStage.show();
+        });
+        
+        inputPane.getChildren().addAll(answerButton, menuButton);
+        loginPane.getChildren().addAll(gameMessage, inputPane);
+        
+        
+        gameScene = new Scene(loginPane, 600, 250);
     }
     
     @Override
@@ -156,7 +305,7 @@ public class Ui extends Application {
         UserDao taotao = new UserDao(dbAddress);
         ExerciseDao daodao = new ExerciseDao(dbAddress);
         
-        this.loggedInUserName = "";
+//        this.loggedInUserName = "";
         
         
 //        daoToEngine.createTablesIfNotExist();
@@ -171,7 +320,7 @@ public class Ui extends Application {
         this.testStage = primaryStage;
         
         createLoginScene();
-        createMenuScene();
+//        createMenuScene();
         
         this.testStage.setScene(loginScene);
         this.testStage.setTitle("Arithmetix 1.0!");

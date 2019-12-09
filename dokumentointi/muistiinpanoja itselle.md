@@ -29,3 +29,6 @@ DAO, vaiheessa, LOGIN-systeemi kuntoon JA HETI!!
             <version>1.4.197</version>
         </dependency>
 
+13:15-
+
+"git checkout ." palauttaa paikalliset tiedostot vastaamaan repositorion tiedostoja
