@@ -8,6 +8,8 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 ## Dokumentaatio
 
+[Käyttöohje](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/kayttoohje.md)
+
 [Tuntikirjanpito](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/tuntikirjanpito.md)
 
 [Vaatimusmäärittelydokumentti](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/vaatimusmaarittely.md)

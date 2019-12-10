@@ -17,4 +17,6 @@ Ohjelma käynnistetään komennolla
     
 ## Kirjautuminen
 
-Ohjelma käynnistyy kirjautumisnäkymään
+Ohjelma käynnistyy kirjautumisnäkymään:
+
+![Alkuruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_alkuruutu.jpg)
