@@ -26,3 +26,5 @@ Kirjautumisnäkymän jälkeen ohjelman tässä versiossa on tervetuloruutu, jost
 ## Pelaaminen
 
 Peliruudussa voi harjoitella matematiikkaa:
+
+![Peliruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_peliruutu.jpg)
