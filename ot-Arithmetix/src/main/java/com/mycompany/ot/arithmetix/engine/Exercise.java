@@ -33,6 +33,7 @@ public class Exercise {
         this.y = b;
         this.correctAnswer = a + b;
         this.operation = '+';
+        this.operationOut = "+";
         
     }
     

@@ -80,4 +80,16 @@ public class ExerciseTest {
         assertEquals("+", ex.getOperation());
         
     }
+    
+    @Test
+    public void exerciseOperationOutCorrect(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        Exercise ex = new Exercise(z, w);
+        
+        assertEquals("+", ex.getOperationOut());
+        
+    }
 }
