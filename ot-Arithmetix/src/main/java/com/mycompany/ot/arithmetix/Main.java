@@ -14,8 +14,10 @@ import java.util.Scanner;
  */
 public class Main {
     
-    
-    
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         
         /** Tämä on ohjelman luokka Main, joka käynnistää varsinaisen käyttöliittymäluokan.
