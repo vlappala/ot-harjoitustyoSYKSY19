@@ -55,8 +55,8 @@ public class ExerciseTest {
         
         Exercise ex = new Exercise(z, w);
         
-        assertEquals(ex.getX(), z);
-        assertEquals(ex.getY(), w);
+        assertEquals(z, ex.getX());
+        assertEquals(w, ex.getY());
     }
     
     @Test
@@ -66,6 +66,18 @@ public class ExerciseTest {
         
         Exercise ex = new Exercise(z, w);
         
-        assertEquals(ex.getAnswer(), z+w);
+        assertEquals(z+w, ex.getAnswer());
+    }
+    
+    @Test
+    public void exerciseOperationIsCorrect(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        Exercise ex = new Exercise(z, w);
+        
+        assertEquals("+", ex.getOperation());
+        
     }
 }

@@ -5,10 +5,14 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
-/**
- *
- * @author vlappala
- */
+        /** Tämä on User-luokka, josta luodaan ilmentymiä sovelluksen käyttäjien erottelemiseksi toisistaan.
+         *  Erottelu tapahtuu nimien perusteella.
+         * 
+         *
+         * 
+         * 
+         * 
+         */
 public class User {
     
     private String username;

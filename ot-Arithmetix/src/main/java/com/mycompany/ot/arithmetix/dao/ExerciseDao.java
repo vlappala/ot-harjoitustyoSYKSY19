@@ -20,14 +20,14 @@ import java.util.List;
  *
  * @author vlappala
  */
-public class ExerciseDao implements Dao<Exercise, String>{
+public class ExerciseDao implements Dao<Exercise, String> {
     
     String url;  // "jdbc:sqlite:./testidata.db";
 //    UserDao userDao;
     
     public ExerciseDao(String dbAddress) {
         
-        this.url = "jdbc:sqlite:./"+dbAddress;
+        this.url = "jdbc:sqlite:./" + dbAddress;
 //        this.userDao = ud;
         
     }
@@ -131,7 +131,7 @@ public class ExerciseDao implements Dao<Exercise, String>{
 //        connection.close();
 //
 //        return a;
-          return null;
+        return null;
     }
 
     @Override
@@ -173,7 +173,7 @@ public class ExerciseDao implements Dao<Exercise, String>{
 //        }
 //
 //        return users;
-    return null;
+        return null;
 	      
     }
     public ArrayList<Exercise> list(User u) throws SQLException {
@@ -184,14 +184,14 @@ public class ExerciseDao implements Dao<Exercise, String>{
 
         Connection conn = DriverManager.getConnection(url);
 //            ResultSet result = conn.prepareStatement("SELECT * FROM Exercise WHERE name = ?").executeQuery()) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Exercises WHERE name = ?");
-            stmt.setString(1, name);
-            ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Exercises WHERE name = ?");
+        stmt.setString(1, name);
+        ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                exercises.add(new Exercise(rs.getInt("firstterm"), rs.getString("operation"), rs.getInt("secondterm"), rs.getString("correct"), rs.getDouble("time")));
-            }
-            conn.close();
+        while (rs.next()) {
+            exercises.add(new Exercise(rs.getInt("firstterm"), rs.getString("operation"), rs.getInt("secondterm"), rs.getString("correct"), rs.getDouble("time")));
+        }
+        conn.close();
         
 
         return exercises;

@@ -10,7 +10,7 @@ public class UserDao implements Dao<User, String> {
     
     public UserDao(String dbAddress) {
         
-        this.url = "jdbc:sqlite:./"+dbAddress;
+        this.url = "jdbc:sqlite:./" + dbAddress;
         
     }
     

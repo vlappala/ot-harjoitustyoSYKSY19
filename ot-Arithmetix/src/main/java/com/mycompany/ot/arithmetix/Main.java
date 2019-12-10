@@ -18,6 +18,15 @@ public class Main {
     
     public static void main(String[] args) {
         
+        /** Tämä on ohjelman luokka Main, joka käynnistää varsinaisen käyttöliittymäluokan.
+         * 
+         * 
+         *
+         * 
+         * 
+         * 
+         */
+        
         
         
         // mikäli poistat vahingossa tietokannan tai teet siihen muutoksia,

@@ -5,10 +5,14 @@
  */
 package com.mycompany.ot.arithmetix.engine;
 
-/**
- *
- * @author vlappala
- */
+        /** Tämä on Exercise-luokka. Luokasta luodaan harjoituksia, joilla ohjelman käyttäjä
+         *  voi harjoitella matemaattista osaamistaan
+         * 
+         *
+         * 
+         * 
+         * 
+         */
 public class Exercise {
     
     private int x;
@@ -53,7 +57,7 @@ public class Exercise {
         return this.y;
     }
     public String getOperation() {
-        return ""+this.operation;
+        return "" + this.operation;
     }
     public void setTime(double time) {
         this.time = time;
@@ -66,7 +70,7 @@ public class Exercise {
         this.answerCorrect = b;
     }
     public String getCorrect() {
-        return ""+this.answerCorrect;
+        return "" + this.answerCorrect;
     }
     public String getOperationOut() {
         return this.operationOut;
@@ -75,6 +79,6 @@ public class Exercise {
         return this.answerCorrectOut;
     }
     public String toString() {
-        return ""+this.x+" "+this.getOperationOut()+" "+this.getY()+" "+this.getAnswerCorrectOut()+" "+this.getTime();
+        return "" + this.x + " " + this.getOperationOut() + " " + this.getY() + " " + this.getAnswerCorrectOut() + " " + this.getTime();
     }
 }

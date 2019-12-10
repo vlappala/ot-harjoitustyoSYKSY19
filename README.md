@@ -6,6 +6,8 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 [Viikon 5 Release](https://github.com/vlappala/ot-harjoitustyoSYKSY19/releases/tag/viikko5)
 
+[Viikon 6 Release](https://github.com/vlappala/ot-harjoitustyoSYKSY19/releases/tag/Viikko6)
+
 ## Dokumentaatio
 
 [Käyttöohje](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/kayttoohje.md)
