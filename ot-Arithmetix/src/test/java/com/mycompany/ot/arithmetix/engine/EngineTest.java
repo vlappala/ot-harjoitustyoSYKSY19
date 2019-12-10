@@ -168,6 +168,24 @@ public class EngineTest {
 
     }
     
+    @Test
+    public void getExerciseDaoWorks() {
+        
+        ExerciseDao ed = this.engine.getExerciseDao();
+        
+        assertEquals(ed, this.engine.getExerciseDao());
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksTooSmallString() {
+        
+        String test = "xy";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
 //    @Test
 //    public void userIsDeletedCorrectly() {
 //        try {

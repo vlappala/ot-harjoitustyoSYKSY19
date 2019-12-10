@@ -92,4 +92,21 @@ public class ExerciseTest {
         assertEquals("+", ex.getOperationOut());
         
     }
+    
+    @Test
+    public void exerciseOtherConstructorWorks(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        
+        Exercise ex = new Exercise(z, "+", w, testi, 0.0);
+        
+        assertEquals(z, ex.getX());
+        assertEquals(w, ex.getY());
+        assertEquals(""+z+w, ex.getAnswerCorrectOut());
+        assertEquals("+", ex.getOperationOut());
+        assertEquals(0, ex.getTime(), 0);
+    }
 }
