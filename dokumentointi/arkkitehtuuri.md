@@ -8,3 +8,4 @@ Sekvenssikaavio uuden käyttäjän luomisesta:
 
 Alustava pakkauskaavio:
 
+![Pakkauskaavio:](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/alustava_pakkauskaavio.jpg)
