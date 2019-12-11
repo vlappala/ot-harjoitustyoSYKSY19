@@ -18,6 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -64,6 +66,7 @@ public class Ui extends Application {
         
         
         Button loginButton = new Button("Kirjaudu sisään tai luo uusi käyttäjä");
+        loginButton.setDefaultButton(true);
 //        Button createButton = new Button("create new user");
 
         loginButton.setOnAction(e->{
@@ -147,6 +150,7 @@ public class Ui extends Application {
         loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
         
         Button logoutButton = new Button("Kirjaudu ulos");
+        logoutButton.setCancelButton(true);
 //        Button createButton = new Button("create new user");
 
         logoutButton.setOnAction(e->{
@@ -186,11 +190,17 @@ public class Ui extends Application {
         HBox inputPane = new HBox(10);
         loginPane.setPadding(new Insets(10));
         
-        this.gameEngine.newExercise();
+//        this.gameEngine.newExercise();
         
-        Label questionLabel = new Label(""+this.gameEngine.getExercise().getX()
+        Label questionLabel = new Label();
+        
+        if (this.gameEngine.getExercise() != null) {
+            questionLabel.setText(""+this.gameEngine.getExercise().getX()
                 +" "+this.gameEngine.getExercise().getOperation()
                 +" "+this.gameEngine.getExercise().getY()+"?");
+        }
+        
+        
 //        Label loginLabel = new Label("Käyttäjätunnus: ");
 //        TextField usernameInput = new TextField();
 //        
@@ -219,59 +229,106 @@ public class Ui extends Application {
         gameMessage.setText("PELI!");
         
         Button menuButton = new Button("Takaisin valikkoon");
+        menuButton.setCancelButton(true);
 //        Button createButton = new Button("create new user");
 
         menuButton.setOnAction(e->{
             
 //            this.gameEngine.logoutUser();
 //            createLoginScene();
+            this.gameEngine.clearExercise();
             
             this.testStage.setScene(menuScene);
             this.testStage.show();
         });
         
-        Button answerButton = new Button("Vastaa!");
+        Button answerButton = new Button();
+        
+        if (this.gameEngine.getExercise() != null) {
+            answerButton.setText("Vastaa!");
+        } else {
+            answerButton.setText("Aloita peli!");
+        }
+        
+        answerButton.setDefaultButton(true);
+        
+        
 //        Button createButton = new Button("create new user");
+
+//        answerInput.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//     
+//        @Override
+//        public void handle(KeyEvent event) {
+//            if(event.getCode().equals(KeyCode.ENTER)) {
+//                 answerButton.
+//            }
+//        }
+//        });
+
 
         answerButton.setOnAction(e->{
             
-            if (!this.gameEngine.answerInGoodFormat(answerInput.getText())) {
-                gameMessage.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
-            } else if (Integer.parseInt(answerInput.getText()) == this.gameEngine.getExercise().getAnswer()) {
-                
-                // ... oikea vastaus
-                
-                // AJASTUSFUNKTIO ENGINEEN!!!
-                
-                // TIETOKANTAYHTEYS KONDIKSEEN!
-                
-                // TIETOKANTAOPERAATION SUORITUSKOMENTO ENGINEN VASTAUKSENTARKASTAJALLE?
-                
-                // ENTTERINKUUNTELU TEKSTIKENTILLE?
-                
-                gameMessage.setText("Oikea vastaus, huraa!");
-                
+            if (this.gameEngine.getExercise() == null) {
                 this.gameEngine.newExercise();
                 
                 questionLabel.setText(""+this.gameEngine.getExercise().getX()
                 +" "+this.gameEngine.getExercise().getOperation()
                 +" "+this.gameEngine.getExercise().getY()+"?");
                 
-                answerInput.clear();
+                answerButton.setText("Vastaa!");
+                
+                answerInput.requestFocus();
             } else {
-                // Väärä vastaus
                 
-                gameMessage.setText("Aijai, väärä vastaus!");
                 
-//                createGameScene();
-                
-                this.gameEngine.newExercise();
-                
-                questionLabel.setText(""+this.gameEngine.getExercise().getX()
-                +" "+this.gameEngine.getExercise().getOperation()
-                +" "+this.gameEngine.getExercise().getY()+"?");
-                
-                answerInput.clear();
+            
+            
+                if (!this.gameEngine.answerInGoodFormat(answerInput.getText())) {
+                    gameMessage.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
+                } else if (Integer.parseInt(answerInput.getText()) == this.gameEngine.getExercise().getAnswer()) {
+
+                    // ... oikea vastaus
+
+                    // AJASTUSFUNKTIO ENGINEEN!!! KUITENKIN KÄLIIN?
+
+                    // TIETOKANTAYHTEYS KONDIKSEEN!
+
+                    // TIETOKANTAOPERAATION SUORITUSKOMENTO ENGINEN VASTAUKSENTARKASTAJALLE?
+
+                    // ENTTERINKUUNTELU TEKSTIKENTILLE?
+
+                    gameMessage.setText("Oikea vastaus, huraa!");
+                    
+                    this.gameEngine.processAnswer(true);
+
+                    this.gameEngine.newExercise();
+
+                    questionLabel.setText(""+this.gameEngine.getExercise().getX()
+                    +" "+this.gameEngine.getExercise().getOperation()
+                    +" "+this.gameEngine.getExercise().getY()+"?");
+
+                    answerInput.clear();
+                    answerInput.requestFocus();
+                } else {
+                    // Väärä vastaus
+
+                    gameMessage.setText("Aijai, väärä vastaus!");
+
+    //                createGameScene();
+    
+                    this.gameEngine.processAnswer(false);
+                    
+                    
+
+                    this.gameEngine.newExercise();
+
+                    questionLabel.setText(""+this.gameEngine.getExercise().getX()
+                    +" "+this.gameEngine.getExercise().getOperation()
+                    +" "+this.gameEngine.getExercise().getY()+"?");
+
+                    answerInput.clear();
+                    answerInput.requestFocus();
+                }
             }
             
 //            this.gameEngine.logoutUser();
@@ -331,18 +388,18 @@ public class Ui extends Application {
         
         
         
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+//        Button btn = new Button();
+//        btn.setText("Say 'Hello World'");
+//        btn.setOnAction(new EventHandler<ActionEvent>() {
+//            
+//            @Override
+//            public void handle(ActionEvent event) {
+//                System.out.println("Hello World!");
+//            }
+//        });
+//        
+//        StackPane root = new StackPane();
+//        root.getChildren().add(btn);
         
 //        Scene scene = new Scene(root, 300, 250);
 //        

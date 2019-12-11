@@ -25,6 +25,8 @@ public class Engine {
     
     private ArrayList<User> users;
     
+    private Timer timer;
+    
     public Engine(UserDao createdUserDao, ExerciseDao createdExerciseDao) {
         
         this.users = new ArrayList<>();
@@ -35,6 +37,7 @@ public class Engine {
         this.exerciseDao = createdExerciseDao;
         this.exerciseDao.createTablesIfNotExist();
         
+        this.timer = new Timer();
         
     }
     
@@ -117,10 +120,39 @@ public class Engine {
         
         this.exercise = new Exercise(a, b);
         
+//        this.timer.clearTimer();
+        this.timer.setStartTime();
+        
     }
     
     public Exercise getExercise() {
         return this.exercise;
+    }
+    
+    public void clearExercise() {
+        this.exercise = null;
+    }
+    
+    public void processAnswer(boolean correct) {
+        
+        this.timer.setEndTime();
+        
+        double d = this.timer.getDifferenceInSeconds();
+        
+        System.out.println(d/1000);
+//        this.timer.clearTimer();
+//        if (this.exercise != null) {
+//            this.exercise.setCorrect(correct);
+//            this.exercise.setTime(this.timer.getDifferenceInSeconds());
+//            
+//            try {
+//                this.getExerciseDao().create(this.getExercise(), this.getUser());
+//            }
+//            catch (Exception e) {
+//                System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
+//            }
+//        }
+        
     }
     
     public UserDao getUserDao() {
@@ -129,6 +161,9 @@ public class Engine {
     
     public ExerciseDao getExerciseDao() {
         return this.exerciseDao;
+    }
+    public Timer getTimer() {
+        return this.timer;
     }
     
     public boolean answerInGoodFormat(String text) {

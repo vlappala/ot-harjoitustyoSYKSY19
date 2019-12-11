@@ -19,4 +19,5 @@
 | 9.12.2019 | 2,00 | GUIta jatkettu, pääsee peliruutuun jo! |
 | 9.12.2019 | 1,00 | GUIta jatkettu, pelaaminen onnistuu, tietokantayhteys ei! |
 | 10.12.2019 | 2,00 | Testausta ja dokumentointia |
+| 11.12.2019 | 2,00 | Käytettävyyden parantelua |
 | YHTEENSÄ | 29 tuntia | |
