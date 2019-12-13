@@ -176,9 +176,9 @@ public class ExerciseDao implements Dao<Exercise, String> {
         return null;
 	      
     }
-    public ArrayList<Exercise> list(User u) throws SQLException {
+    public ArrayList<Exercise> list(String username) throws SQLException {
         
-        String name = u.getName();
+        String name = username;
         
         ArrayList<Exercise> exercises = new ArrayList<>();
 

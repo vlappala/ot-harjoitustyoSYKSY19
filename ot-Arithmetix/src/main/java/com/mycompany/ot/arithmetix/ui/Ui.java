@@ -35,6 +35,7 @@ public class Ui extends Application {
     private Scene newUserScene;
     private Scene loginScene;
     private Scene menuScene;
+    private Scene statsScene;
     
     private Stage testStage;
     
@@ -43,6 +44,10 @@ public class Ui extends Application {
     
     private boolean newUser;
     
+//    private long startTime;
+//    private long elapsedTime;
+    
+    private boolean admin;
     
     
     private void createLoginScene() {
@@ -95,14 +100,31 @@ public class Ui extends Application {
                     if (this.gameEngine.hasUser()) {
 //                        this.loggedInUserName = this.gameEngine.getUser().getName();
                         this.newUser = true;
+                        
+//                        kommentoitu 15:25
                         createMenuScene();
+                        createStatsScene(this.gameEngine.getUser().getName());
+                        
+                        if (usernameInput.getText().equals("admin")) {
+                            this.admin = true;
+                        }
+                        
+                        usernameInput.clear();
                         this.testStage.setScene(menuScene);
                         this.testStage.show();
                     }
                     
                 } else {
 //                    this.loggedInUserName = this.gameEngine.getUser().getName();
+                    usernameInput.clear();
+                    
+//                    kommentoitu 15:25
                     createMenuScene();
+                    createStatsScene(this.gameEngine.getUser().getName());
+                    
+                    if (usernameInput.getText().equals("admin")) {
+                        this.admin = true;
+                    }
                     this.testStage.setScene(menuScene);
                     this.testStage.show();
                 }
@@ -149,20 +171,8 @@ public class Ui extends Application {
         
         loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
         
-        Button logoutButton = new Button("Kirjaudu ulos");
-        logoutButton.setCancelButton(true);
-//        Button createButton = new Button("create new user");
-
-        logoutButton.setOnAction(e->{
-            
-            this.gameEngine.logoutUser();
-            createLoginScene();
-            
-            this.testStage.setScene(loginScene);
-            this.testStage.show();
-        });
-        
         Button gameButton = new Button("Aloita pelaaminen!");
+        gameButton.setDefaultButton(true);
 //        Button createButton = new Button("create new user");
 
         gameButton.setOnAction(e->{
@@ -175,11 +185,160 @@ public class Ui extends Application {
             this.testStage.show();
         });
         
+        Button statsButton = new Button("Katso tilastosi!");
+        
+
+
+        statsButton.setOnAction(e->{
+            
+
+//            createStatsScene(User u);
+            
+            this.testStage.setScene(statsScene);
+
+            this.testStage.show();
+        });
+        
+        Button logoutButton = new Button("Kirjaudu ulos");
+        logoutButton.setCancelButton(true);
+//        Button createButton = new Button("create new user");
+
+        logoutButton.setOnAction(e->{
+            
+            this.gameEngine.logoutUser();
+//            createLoginScene();
+
+            this.admin = false;
+            
+            this.testStage.setScene(loginScene);
+            this.testStage.show();
+        });
+        
+
+        
         inputPane.getChildren().addAll(gameButton, logoutButton);
         loginPane.getChildren().addAll(loginMessage, inputPane);
         
         
         menuScene = new Scene(loginPane, 600, 250);
+    }
+    
+    private void createStatsScene(String userName) {
+        
+        System.out.println("Päästään metodiin");
+        
+        // Kopsattua käliä:
+        
+//        TableView tableView = new TableView();
+//
+//        TableColumn<String, Person> column1 = new TableColumn<>("First Name");
+//        column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+//
+//
+//        TableColumn<String, Person> column2 = new TableColumn<>("Last Name");
+//        column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+//
+//
+//        tableView.getColumns().add(column1);
+//        tableView.getColumns().add(column2);
+//
+//        tableView.getItems().add(new Person("John", "Doe"));
+//        tableView.getItems().add(new Person("Jane", "Deer"));
+//
+//        VBox vbox = new VBox(tableView,exitButton);
+//
+//        Scene scene = new Scene(vbox);
+//
+//        primaryStage.setScene(scene);
+//
+//        primaryStage.show();
+//        
+//        // ...........................................
+//        
+//        VBox loginPane = new VBox(10);
+//        HBox inputPane = new HBox(10);
+//        loginPane.setPadding(new Insets(10));
+//        Label loginLabel = new Label("Käyttäjätunnus: ");
+//        TextField usernameInput = new TextField();
+//        
+//        inputPane.getChildren().addAll(loginLabel, usernameInput);
+//        Label loginMessage = new Label();
+//        
+//        String loginMessageText = "Tervetuloa matematiikkapeliin! \n"
+//                            +   "Syötä olemassaoleva käyttäjätunnus tai anna toivomasi tunnus uudelle käyttäjälle!";
+//        
+//        loginMessage.setText(loginMessageText);
+//         String loginErrorMessage = "Käyttäjätunnuksen pitää olla vähintään 3 ja enintään 8 merkkiä pitkä";
+//        
+//        
+//        Button loginButton = new Button("Kirjaudu sisään tai luo uusi käyttäjä");
+//        loginButton.setDefaultButton(true);
+////        Button createButton = new Button("create new user");
+//
+//        loginButton.setOnAction(e->{
+//            
+//            if (usernameInput.getText().length() < 3 || usernameInput.getText().length() > 8) {
+//                loginMessage.setText(loginMessageText+"\n"+loginErrorMessage);
+//            } else {
+//                
+//                try {
+//
+//                    this.gameEngine.loginUser(usernameInput.getText());
+//                }
+//                catch (Exception f) {
+//                    loginMessage.setText(loginMessageText+"\n"+loginErrorMessage+"\n"+"SQL-virhe!");
+//                }
+//                
+//                if (this.gameEngine.hasUser() == false) {
+//                    
+//                    try {
+//                        this.gameEngine.createUser(usernameInput.getText());
+//                    }
+//                    catch (Exception f) {
+//                        loginMessage.setText(loginMessageText+"\n"+loginErrorMessage+"\n"+"SQL-virhe, käyttäjää ei voitu luoda!");
+//                    }
+//                    
+//                    if (this.gameEngine.hasUser()) {
+////                        this.loggedInUserName = this.gameEngine.getUser().getName();
+//                        this.newUser = true;
+//                        
+////                        kommentoitu 15:25
+//                        createMenuScene();
+//                        
+//                        if (usernameInput.getText().equals("admin")) {
+//                            this.admin = true;
+//                        }
+//                        
+//                        usernameInput.clear();
+//                        this.testStage.setScene(menuScene);
+//                        this.testStage.show();
+//                    }
+//                    
+//                } else {
+////                    this.loggedInUserName = this.gameEngine.getUser().getName();
+//                    usernameInput.clear();
+//                    
+////                    kommentoitu 15:25
+//                    createMenuScene();
+//                    
+//                    if (usernameInput.getText().equals("admin")) {
+//                        this.admin = true;
+//                    }
+//                    this.testStage.setScene(menuScene);
+//                    this.testStage.show();
+//                }
+//                
+//                
+//                
+//            }
+//            
+//           
+//        });
+//        
+//        loginPane.getChildren().addAll(loginMessage, inputPane, loginButton);
+//        
+//        
+//        loginScene = new Scene(loginPane, 600, 250);
     }
     
     private void createGameScene() {
@@ -201,18 +360,14 @@ public class Ui extends Application {
         }
         
         
-//        Label loginLabel = new Label("Käyttäjätunnus: ");
-//        TextField usernameInput = new TextField();
-//        
-//        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
-//        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
+
 
         Label answerLabel = new Label("Vastaus: ");
         TextField answerInput = new TextField();
         
         inputPane.getChildren().addAll(questionLabel, answerLabel, answerInput);
         
-        String greetingTemplate = "";
+//        String greetingTemplate = "";
         
 //        if (this.newUser) {
 //            greetingTemplate += welcomeMessageNewUser;
@@ -278,6 +433,8 @@ public class Ui extends Application {
                 answerButton.setText("Vastaa!");
                 
                 answerInput.requestFocus();
+                
+//                startTime = System.currentTimeMillis();
             } else {
                 
                 
@@ -285,7 +442,12 @@ public class Ui extends Application {
             
                 if (!this.gameEngine.answerInGoodFormat(answerInput.getText())) {
                     gameMessage.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
+                    answerInput.requestFocus();
                 } else if (Integer.parseInt(answerInput.getText()) == this.gameEngine.getExercise().getAnswer()) {
+                    
+//                    elapsedTime = System.currentTimeMillis()-startTime;
+//                    System.out.println((double)elapsedTime/1000);
+//                    double d = (double)elapsedTime;
 
                     // ... oikea vastaus
 
@@ -293,9 +455,9 @@ public class Ui extends Application {
 
                     // TIETOKANTAYHTEYS KONDIKSEEN!
 
-                    // TIETOKANTAOPERAATION SUORITUSKOMENTO ENGINEN VASTAUKSENTARKASTAJALLE?
+                    
 
-                    // ENTTERINKUUNTELU TEKSTIKENTILLE?
+                    
 
                     gameMessage.setText("Oikea vastaus, huraa!");
                     
@@ -309,10 +471,14 @@ public class Ui extends Application {
 
                     answerInput.clear();
                     answerInput.requestFocus();
+//                    startTime = System.currentTimeMillis();
                 } else {
                     // Väärä vastaus
 
                     gameMessage.setText("Aijai, väärä vastaus!");
+//                    elapsedTime = System.currentTimeMillis()-startTime;
+//                    double d = (double)elapsedTime;
+//                    System.out.println(d/1000);
 
     //                createGameScene();
     
@@ -328,6 +494,7 @@ public class Ui extends Application {
 
                     answerInput.clear();
                     answerInput.requestFocus();
+//                    startTime = System.currentTimeMillis();
                 }
             }
             

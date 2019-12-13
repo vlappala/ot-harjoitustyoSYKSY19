@@ -120,7 +120,7 @@ public class Engine {
         
         this.exercise = new Exercise(a, b);
         
-//        this.timer.clearTimer();
+        this.timer.clearTimer();
         this.timer.setStartTime();
         
     }
@@ -137,21 +137,22 @@ public class Engine {
         
         this.timer.setEndTime();
         
+        
         double d = this.timer.getDifferenceInSeconds();
         
         System.out.println(d/1000);
-//        this.timer.clearTimer();
-//        if (this.exercise != null) {
-//            this.exercise.setCorrect(correct);
-//            this.exercise.setTime(this.timer.getDifferenceInSeconds());
-//            
-//            try {
-//                this.getExerciseDao().create(this.getExercise(), this.getUser());
-//            }
-//            catch (Exception e) {
-//                System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
-//            }
-//        }
+        this.timer.clearTimer();
+        if (this.exercise != null) {
+            this.exercise.setCorrect(correct);
+            this.exercise.setTime(d/1000);
+            
+            try {
+                this.getExerciseDao().create(this.getExercise(), this.getUser());
+            }
+            catch (Exception e) {
+                System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
+            }
+        }
         
     }
     

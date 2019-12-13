@@ -187,6 +187,7 @@ public class TextUI {
                         double time3 = time2-time1;
                                 
                         System.out.println("Oikea vastaus, hienoa!");
+                        System.out.println(time3/1000);
                         this.gameEngine.getExercise().setCorrect(true);
                         this.gameEngine.getExercise().setTime(time3/1000);
                         try {
