@@ -166,6 +166,18 @@ public class Engine {
     public Timer getTimer() {
         return this.timer;
     }
+    public ArrayList<Exercise> getExerciseList() {
+        
+        ArrayList result = new ArrayList<>();
+        
+        try {
+            result = this.exerciseDao.list(this.getUser().getName());
+        } catch (Exception e) {
+            System.out.println("Virhe harjoitusten hakemisessa tietokannasta!");
+        }
+        
+        return result;
+    }
     
     public boolean answerInGoodFormat(String text) {
         

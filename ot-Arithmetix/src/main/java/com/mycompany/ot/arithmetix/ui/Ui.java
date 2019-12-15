@@ -8,20 +8,20 @@ package com.mycompany.ot.arithmetix.ui;
 import com.mycompany.ot.arithmetix.dao.ExerciseDao;
 import com.mycompany.ot.arithmetix.dao.UserDao;
 import com.mycompany.ot.arithmetix.engine.Engine;
+import com.mycompany.ot.arithmetix.engine.Exercise;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 import javafx.geometry.Insets;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -103,7 +103,8 @@ public class Ui extends Application {
                         
 //                        kommentoitu 15:25
                         createMenuScene();
-                        createStatsScene(this.gameEngine.getUser().getName());
+//                        createStatsScene(this.gameEngine.getUser().getName());
+                        createStatsScene();
                         
                         if (usernameInput.getText().equals("admin")) {
                             this.admin = true;
@@ -120,7 +121,8 @@ public class Ui extends Application {
                     
 //                    kommentoitu 15:25
                     createMenuScene();
-                    createStatsScene(this.gameEngine.getUser().getName());
+//                    createStatsScene(this.gameEngine.getUser().getName());
+                    createStatsScene();
                     
                     if (usernameInput.getText().equals("admin")) {
                         this.admin = true;
@@ -191,6 +193,7 @@ public class Ui extends Application {
 
         statsButton.setOnAction(e->{
             
+            
 
 //            createStatsScene(User u);
             
@@ -216,38 +219,71 @@ public class Ui extends Application {
         
 
         
-        inputPane.getChildren().addAll(gameButton, logoutButton);
+        inputPane.getChildren().addAll(gameButton, statsButton, logoutButton);
         loginPane.getChildren().addAll(loginMessage, inputPane);
         
         
         menuScene = new Scene(loginPane, 600, 250);
     }
     
-    private void createStatsScene(String userName) {
+    private void createStatsScene() {
         
-        System.out.println("Päästään metodiin");
+//        System.out.println("Päästään createStatsScene-metodiin");
         
         // Kopsattua käliä:
         
-//        TableView tableView = new TableView();
-//
-//        TableColumn<String, Person> column1 = new TableColumn<>("First Name");
-//        column1.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-//
-//
-//        TableColumn<String, Person> column2 = new TableColumn<>("Last Name");
+        TableView tableView = new TableView();
+        
+        ArrayList<Exercise> exerciseList = this.gameEngine.getExerciseList();
+
+        TableColumn<String, Exercise> column1 = new TableColumn<>("X");
+        column1.setCellValueFactory(new PropertyValueFactory<>("X"));
+        
+        TableColumn<String, Exercise> column2 = new TableColumn<>("op");
+        column2.setCellValueFactory(new PropertyValueFactory<>("OperationOut"));
+        
+        TableColumn<String, Exercise> column3 = new TableColumn<>("Y");
+        column3.setCellValueFactory(new PropertyValueFactory<>("Y"));
+        
+        TableColumn<String, Exercise> column4 = new TableColumn<>("Oikein");
+        column4.setCellValueFactory(new PropertyValueFactory<>("AnswerCorrectOut"));
+        
+        TableColumn<String, Exercise> column5 = new TableColumn<>("Aika sekunteina");
+        column5.setCellValueFactory(new PropertyValueFactory<>("Time"));
+
+
+//        TableColumn<String, Exercise> column2 = new TableColumn<>("Last Name");
 //        column2.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-//
-//
-//        tableView.getColumns().add(column1);
+        
+
+
+
+        tableView.getColumns().add(column1);
+        tableView.getColumns().add(column2);
+        tableView.getColumns().add(column3);
+        tableView.getColumns().add(column4);
+        tableView.getColumns().add(column5);
 //        tableView.getColumns().add(column2);
+
+        System.out.println(exerciseList.size());
 //
-//        tableView.getItems().add(new Person("John", "Doe"));
+        for (Exercise e : exerciseList) {
+            tableView.getItems().add(e);
+        }
 //        tableView.getItems().add(new Person("Jane", "Deer"));
-//
-//        VBox vbox = new VBox(tableView,exitButton);
-//
-//        Scene scene = new Scene(vbox);
+        
+        tableView.setPlaceholder(new Label("Ei näytettäviä harjoituksia"));
+        
+        Button exitButton = new Button("Takaisin valikkoon");
+        
+        exitButton.setOnAction(e->{
+            this.testStage.setScene(menuScene);
+            this.testStage.show();
+        });
+
+        VBox vbox = new VBox(tableView,exitButton);
+
+        statsScene = new Scene(vbox, 600, 250);
 //
 //        primaryStage.setScene(scene);
 //
