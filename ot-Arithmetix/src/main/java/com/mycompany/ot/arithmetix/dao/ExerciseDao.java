@@ -44,7 +44,8 @@ public class ExerciseDao implements Dao<Exercise, String> {
                 + "    operation varchar(1),\n"
                 + "    secondterm integer,\n"
                 + "    correct varchar(1),\n"
-                + "    time real);";
+                + "    time real,\n"
+                + "    date date);";
         
         try (Connection conn = DriverManager.getConnection(this.url);
                 Statement stmt = conn.createStatement()) {
@@ -85,16 +86,18 @@ public class ExerciseDao implements Dao<Exercise, String> {
 //        if (read(user.getName()) == null) {
 //            return;
 //        }
+        String dateString = "datetime('now')";
 
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Exercises"
-            + " (name, firstterm, operation, secondterm, correct, time)"
-            + " VALUES (?, ?, ?, ?, ?, ?)");
+            + " (name, firstterm, operation, secondterm, correct, time, date)"
+            + " VALUES (?, ?, ?, ?, ?, ?, datetime('now', 'localtime'))");
         stmt.setString(1, u.getName());
         stmt.setInt(2, ex.getX());
         stmt.setString(3, ex.getOperation());
         stmt.setInt(4, ex.getY());
         stmt.setString(5, ex.getCorrect());
         stmt.setDouble(6, ex.getTime());
+//        stmt.setString(7, "datetime('now', 'localtime')");
 //        stmt.setString(3), ex.getOperation());
 //        stmt.setString(2, user.getPuhelinnumero());
 //        stmt.setString(3, user.getKatuosoite());
@@ -189,7 +192,7 @@ public class ExerciseDao implements Dao<Exercise, String> {
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            exercises.add(new Exercise(rs.getInt("firstterm"), rs.getString("operation"), rs.getInt("secondterm"), rs.getString("correct"), rs.getDouble("time")));
+            exercises.add(new Exercise(rs.getInt("firstterm"), rs.getString("operation"), rs.getInt("secondterm"), rs.getString("correct"), rs.getDouble("time"), rs.getString("date")));
         }
         conn.close();
         

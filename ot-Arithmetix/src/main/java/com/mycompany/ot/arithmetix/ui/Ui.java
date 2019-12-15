@@ -195,7 +195,7 @@ public class Ui extends Application {
             
             
 
-//            createStatsScene(User u);
+            createStatsScene();
             
             this.testStage.setScene(statsScene);
 
@@ -248,8 +248,11 @@ public class Ui extends Application {
         TableColumn<String, Exercise> column4 = new TableColumn<>("Oikein");
         column4.setCellValueFactory(new PropertyValueFactory<>("AnswerCorrectOut"));
         
-        TableColumn<String, Exercise> column5 = new TableColumn<>("Aika sekunteina");
+        TableColumn<String, Exercise> column5 = new TableColumn<>("Suoritusaika sekunteina");
         column5.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        
+        TableColumn<String, Exercise> column6 = new TableColumn<>("Päivämäärä");
+        column6.setCellValueFactory(new PropertyValueFactory<>("Date"));
 
 
 //        TableColumn<String, Exercise> column2 = new TableColumn<>("Last Name");
@@ -263,9 +266,10 @@ public class Ui extends Application {
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
         tableView.getColumns().add(column5);
+        tableView.getColumns().add(column6);
 //        tableView.getColumns().add(column2);
 
-        System.out.println(exerciseList.size());
+//        System.out.println(exerciseList.size());
 //
         for (Exercise e : exerciseList) {
             tableView.getItems().add(e);
@@ -276,12 +280,16 @@ public class Ui extends Application {
         
         Button exitButton = new Button("Takaisin valikkoon");
         
+        exitButton.setCancelButton(true);
+        exitButton.requestFocus();
+        
         exitButton.setOnAction(e->{
             this.testStage.setScene(menuScene);
             this.testStage.show();
         });
 
         VBox vbox = new VBox(tableView,exitButton);
+        vbox.setPadding(new Insets(10));
 
         statsScene = new Scene(vbox, 600, 250);
 //

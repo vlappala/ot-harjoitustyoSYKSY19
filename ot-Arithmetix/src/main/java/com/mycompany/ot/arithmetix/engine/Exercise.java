@@ -22,6 +22,7 @@ public class Exercise {
     private char operation;
     
     private double time;
+    private String date;
     
     private boolean answerCorrect;
     private String answerCorrectOut;
@@ -44,6 +45,17 @@ public class Exercise {
         this.y = b;
         this.answerCorrectOut = correct;
         this.time = time;
+        
+    }
+    
+    public Exercise(int a, String operation, int b, String correct, double time, String date) {
+        
+        this.x = a;
+        this.operationOut = operation;
+        this.y = b;
+        this.answerCorrectOut = correct;
+        this.time = time;
+        this.date = date;
         
     }
     
@@ -78,6 +90,19 @@ public class Exercise {
     }
     public String getAnswerCorrectOut() {
         return this.answerCorrectOut;
+    }
+    public String getCorrectFi() {
+        
+        String result = "";
+        if (this.answerCorrect) {
+            result += "oikein";
+        } else {
+            result += "väärin";
+        }
+        return result;
+    }
+    public String getDate() {
+        return this.date;
     }
     public String toString() {
         return "" + this.x + " " + this.getOperationOut() + " " + this.getY() + " " + this.getAnswerCorrectOut() + " " + this.getTime();
