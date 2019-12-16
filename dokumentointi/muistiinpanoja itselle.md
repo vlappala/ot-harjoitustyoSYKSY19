@@ -32,3 +32,22 @@ DAO, vaiheessa, LOGIN-systeemi kuntoon JA HETI!!
 13:15-
 
 "git checkout ." palauttaa paikalliset tiedostot vastaamaan repositorion tiedostoja
+
+
+
+Javassa on ilmeisesti luokka 
+SimpleDateFormat, josta voi luoda olioita. Olioille voi määritellä patterneja, joiden perusteella SimpleDateFormat-luokka muuttaa stringit päiväyksiksi. Siistiä tässä on se, että nuo patternit voi ilmeisesti määritellä itse melko vapaasti!
+
+Voin siis määritellä SimpleDateFormat-olion patterniksi juuri Sqliten datetime-funktion tuloksen mukaisen stringin komennolla 
+
+SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+Tämän jälkeen voin luoda SimpleDateFormat-oliosta Date-olion komennolla
+
+Date date=formatter.parse("2019-12-13 13:56:31");
+
+http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
+
+SimpleDateFormat:in avulla saan ulos vaikka suomeksi lokalisoitua päivämäärää: "perjantai 13 joulukuuta 2019 17:21:11".
+
+
