@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.ot.arithmetix.engine;
 
 import com.mycompany.ot.arithmetix.dao.*;
@@ -40,26 +36,16 @@ public class Engine {
         this.timer = new Timer();
         
     }
-    
 
-    
-//    public void setUserDao(Dao dao) {
-//        this.userDao = dao;
-//    }
     
     public void loginUser(String name) throws SQLException {
-        
-               
-//        if (this.userDao.read(name) != null) {
-
+              
         User u = this.userDao.read(name);
 
         if (u != null) {
             this.loggedInGamer = u;
         }
-//            return;
-//        }
-        
+
     }
     
     public void createUser(String name) throws SQLException {
@@ -68,9 +54,7 @@ public class Engine {
         User createdUser = new User(name);
 
         this.userDao.create(createdUser);
-        this.loggedInGamer = createdUser;
-
-        
+        this.loggedInGamer = createdUser;        
     }
     
     public void deleteUser(String name) throws SQLException {
@@ -101,8 +85,7 @@ public class Engine {
     
     public User getUser() {
                 
-        return this.loggedInGamer;
-             
+        return this.loggedInGamer;             
     }
     
     public void logoutUser() {

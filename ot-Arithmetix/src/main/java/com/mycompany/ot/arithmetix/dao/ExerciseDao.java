@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.ot.arithmetix.dao;
 
 import com.mycompany.ot.arithmetix.engine.Exercise;
@@ -22,21 +18,18 @@ import java.util.List;
  */
 public class ExerciseDao implements Dao<Exercise, String> {
     
-    String url;  // "jdbc:sqlite:./testidata.db";
-//    UserDao userDao;
+    String url;  
     
     public ExerciseDao(String dbAddress) {
         
         this.url = "jdbc:sqlite:./" + dbAddress;
-//        this.userDao = ud;
+
         
     }
     
     public void createTablesIfNotExist() {
         
-//        String url = "jdbc:sqlite:./testidata.db";
-        
-        // SQL statement for creating a new table
+
         String sql = "CREATE TABLE IF NOT EXISTS Exercises (\n"
                 + "    id integer primary key, \n"
                 + "    name varchar(255),\n"
@@ -49,7 +42,7 @@ public class ExerciseDao implements Dao<Exercise, String> {
         
         try (Connection conn = DriverManager.getConnection(this.url);
                 Statement stmt = conn.createStatement()) {
-            // create a new table
+
             stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -59,34 +52,14 @@ public class ExerciseDao implements Dao<Exercise, String> {
     @Override
     public void create(Exercise ex) throws SQLException {
         
-//        Connection connection = DriverManager.getConnection(url);
-//        
-////        if (read(user.getName()) == null) {
-////            return;
-////        }
-//
-//        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Users"
-//            + " (name)"
-//            + " VALUES (?)");
-//        stmt.setString(1, user.getName());
-////        stmt.setString(2, user.getPuhelinnumero());
-////        stmt.setString(3, user.getKatuosoite());
-////        stmt.setInt(4, user.getPostinumero());
-////        stmt.setString(5, user.getPostitoimipaikka());
-//
-//        stmt.executeUpdate();
-//        stmt.close();
-//        connection.close();
+        // Not implemented
     }
     
     public void create(Exercise ex, User u) throws SQLException {
         
         Connection connection = DriverManager.getConnection(url);
         
-//        if (read(user.getName()) == null) {
-//            return;
-//        }
-        String dateString = "datetime('now')";
+
 
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Exercises"
             + " (name, firstterm, operation, secondterm, correct, time, date)"
@@ -97,12 +70,7 @@ public class ExerciseDao implements Dao<Exercise, String> {
         stmt.setInt(4, ex.getY());
         stmt.setString(5, ex.getCorrect());
         stmt.setDouble(6, ex.getTime());
-//        stmt.setString(7, "datetime('now', 'localtime')");
-//        stmt.setString(3), ex.getOperation());
-//        stmt.setString(2, user.getPuhelinnumero());
-//        stmt.setString(3, user.getKatuosoite());
-//        stmt.setInt(4, user.getPostinumero());
-//        stmt.setString(5, user.getPostitoimipaikka());
+
 
         stmt.executeUpdate();
         stmt.close();
@@ -113,69 +81,25 @@ public class ExerciseDao implements Dao<Exercise, String> {
     @Override
     public Exercise read(String key) throws SQLException {
         
-//        Connection connection = DriverManager.getConnection(url);
-//
-//        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Users WHERE name = ?");
-//        stmt.setString(1, key);
-//        ResultSet rs = stmt.executeQuery();
-//
-//        // Mikäli tulostaulussa ei ole yhtäkään riviä,
-//        // palautetaan null-viite
-//        if (!rs.next()) {
-//            return null;
-//        }
-//
-//        // Edellä siirryttiin ensimmäiselle tulostaulun
-//        // riville -- luodaan user
-//        User a = new User(rs.getString("name"));
-//
-//        stmt.close();
-//        rs.close();
-//        connection.close();
-//
-//        return a;
+        // Not implemented
         return null;
     }
 
     @Override
     public Exercise update(Exercise ex) throws SQLException {
-        // ei toteutettu
+        // Not implemented
         return null;
     }
 
     @Override
     public void delete(String key) throws SQLException {
-        // ei toteutettu
-        
-//        Connection connection = DriverManager.getConnection(url);
-//
-//        PreparedStatement stmt = connection.prepareStatement("DELETE FROM Users WHERE name = ?");
-//        stmt.setString(1, key);
-//        stmt.executeUpdate();
-//                
-//
-// 
-//        stmt.close();
-//        
-//        connection.close();
-
+        // Not implemented
     }
 
     @Override
     public List<Exercise> list() throws SQLException {
 	
-//        List<User> users = new ArrayList<>();
-//
-//        try (Connection conn = DriverManager.getConnection(url);
-//            ResultSet result = conn.prepareStatement("SELECT * FROM Users").executeQuery()) {
-//
-//            while (result.next()) {
-//                users.add(new User(result.getString("name")));
-//            }
-//            conn.close();
-//        }
-//
-//        return users;
+        // Not implemented
         return null;
 	      
     }
@@ -186,7 +110,7 @@ public class ExerciseDao implements Dao<Exercise, String> {
         ArrayList<Exercise> exercises = new ArrayList<>();
 
         Connection conn = DriverManager.getConnection(url);
-//            ResultSet result = conn.prepareStatement("SELECT * FROM Exercise WHERE name = ?").executeQuery()) {
+
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Exercises WHERE name = ?");
         stmt.setString(1, name);
         ResultSet rs = stmt.executeQuery();

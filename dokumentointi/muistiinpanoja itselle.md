@@ -50,4 +50,18 @@ http://tutorials.jenkov.com/java-internationalization/simpledateformat.html
 
 SimpleDateFormat:in avulla saan ulos vaikka suomeksi lokalisoitua päivämäärää: "perjantai 13 joulukuuta 2019 17:21:11".
 
+Parempi vaihtoehto: LocalDateTime!
 
+Toteuta käyttäjän poisto-toiminnallisuus! Samalla pitää poistaa kaikki käyttäjään liittyvät harjoitukset(ehkä? ei? kysy käyttäjältä?)
+
+Refaktorointi-ideoita:
+
+Dao-luokka luomaan sekä User-olion että Exercise-olion. Vaatii Dao-määrittelyn uusimista sekä metodien lisäämistä Daoihin. Parametrit, settingsit? Dao ei näe Settings-oliota, pitäiskö se saada parametrinä? Hm, ehkä, ainakin Exercise-olioihin. Myös Exercise-luokan konstruktoreita ehkä päivitettävä.
+
+Viimeisimmän ajan näyttö peliruutuun!
+
+Pelilauta, vaihtelevan kokoinen? Voi konfiguroida settingseissä?
+
+Kissakuva?
+
+Ohjetekstit ControlFX-luokan avulla?
