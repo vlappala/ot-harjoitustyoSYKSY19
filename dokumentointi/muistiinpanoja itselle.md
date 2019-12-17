@@ -65,3 +65,5 @@ Pelilauta, vaihtelevan kokoinen? Voi konfiguroida settingseissä?
 Kissakuva?
 
 Ohjetekstit ControlFX-luokan avulla?
+
+KESKIARVO MUKAAN PELIIN?

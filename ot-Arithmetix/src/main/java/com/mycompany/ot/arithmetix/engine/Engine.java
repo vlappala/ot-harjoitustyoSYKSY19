@@ -23,6 +23,8 @@ public class Engine {
     
     private Timer timer;
     
+    private double lastClockedTime;
+    
     public Engine(UserDao createdUserDao, ExerciseDao createdExerciseDao) {
         
         this.users = new ArrayList<>();
@@ -116,15 +118,23 @@ public class Engine {
         this.exercise = null;
     }
     
-    public void processAnswer(boolean correct) {
+    public boolean processAnswer(String answer) {
         
         this.timer.setEndTime();
         
+        boolean correct = false;
         
+        if (Integer.parseInt(answer) == this.getExercise().getAnswer()) {
+            correct = true;
+        }
+               
         double d = this.timer.getDifferenceInSeconds();
         
         System.out.println(d/1000);
+        this.lastClockedTime = d/1000;
+        
         this.timer.clearTimer();
+        
         if (this.exercise != null) {
             this.exercise.setCorrect(correct);
             this.exercise.setTime(d/1000);
@@ -136,7 +146,14 @@ public class Engine {
                 System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
             }
         }
+        newExercise();
+        return correct;
+    }
+    public String getQuestion() {
         
+        String question = "";
+        question += this.exercise.getProblemString();
+        return question;
     }
     
     public UserDao getUserDao() {
@@ -149,6 +166,10 @@ public class Engine {
     public Timer getTimer() {
         return this.timer;
     }
+    public double getLastClockedTime() {
+        return this.lastClockedTime;
+    }
+    
     public ArrayList<Exercise> getExerciseList() {
         
         ArrayList result = new ArrayList<>();
@@ -165,6 +186,20 @@ public class Engine {
     public boolean answerInGoodFormat(String text) {
         
         if (text.length() > 6 || text.length() == 0) {
+            return false;
+        }
+        
+        if ((int)text.charAt(0) == 45) {
+            
+            if (text.length() > 1) {
+                
+                for (int i = 1; i < text.length(); i++) {
+                    if ((int) text.charAt(i) < 48 || (int) text.charAt(i) > 57) {
+                        return false;
+                    }
+                }   
+                return true;
+            }
             return false;
         }
         

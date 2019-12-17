@@ -68,7 +68,7 @@ public class ExerciseDao implements Dao<Exercise, String> {
         stmt.setInt(2, ex.getX());
         stmt.setString(3, ex.getOperation());
         stmt.setInt(4, ex.getY());
-        stmt.setString(5, ex.getCorrect());
+        stmt.setString(5, ex.getCorrectFi());
         stmt.setDouble(6, ex.getTime());
 
 

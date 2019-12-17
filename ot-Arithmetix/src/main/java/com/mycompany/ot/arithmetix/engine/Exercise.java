@@ -104,6 +104,9 @@ public class Exercise {
     public String getDate() {
         return this.date;
     }
+    public String getProblemString() {
+        return "" + this.x + this.operationOut + " " + this.y + "?";
+    }
     public String toString() {
         return "" + this.x + " " + this.getOperationOut() + " " + this.getY() + " " + this.getAnswerCorrectOut() + " " + this.getTime();
     }
