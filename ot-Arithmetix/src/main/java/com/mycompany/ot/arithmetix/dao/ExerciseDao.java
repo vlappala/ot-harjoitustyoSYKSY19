@@ -23,6 +23,9 @@ public class ExerciseDao implements Dao<Exercise, String> {
     public ExerciseDao(String dbAddress) {
         
         this.url = "jdbc:sqlite:./" + dbAddress;
+         
+        // testitietokannan luomista varten taulujen luontimetodin kutsu:
+        createTablesIfNotExist();
 
         
     }

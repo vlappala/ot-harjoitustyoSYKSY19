@@ -231,7 +231,7 @@ public class TextUI {
                 }
             } else if (command.equals("88") && this.gameEngine.hasUser() == true) {
                 try {
-                    ArrayList<Exercise> completedEx = this.gameEngine.getExerciseDao().list(this.gameEngine.getUser());
+                    ArrayList<Exercise> completedEx = this.gameEngine.getExerciseDao().list(this.gameEngine.getUser().getName());
                     
                     for (Exercise e : completedEx) {
                         System.out.println(""+this.gameEngine.getUser().getName()+" "+e);

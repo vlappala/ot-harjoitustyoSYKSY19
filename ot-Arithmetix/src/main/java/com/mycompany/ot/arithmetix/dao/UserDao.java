@@ -12,6 +12,9 @@ public class UserDao implements Dao<User, String> {
         
         this.url = "jdbc:sqlite:./" + dbAddress;
         
+        // testitietokannan luomista varten taulujen luontimetodin kutsu:
+        createTablesIfNotExist();
+        
     }
     
     public void createTablesIfNotExist() {
@@ -32,17 +35,36 @@ public class UserDao implements Dao<User, String> {
     @Override
     public void create(User user) throws SQLException {
         
+//        Connection connection = DriverManager.getConnection(url);
+//        
+//
+//        PreparedStatement stmt = connection.prepareStatement("INSERT INTO Users"
+//            + " (name)"
+//            + " VALUES (?)");
+//        stmt.setString(1, user.getName());
+//
+//        stmt.executeUpdate();
+//        stmt.close();
+//        connection.close();
+    }
+    
+    public User create(String userName) throws SQLException {
+        
+        User newUser = new User(userName);
+        
         Connection connection = DriverManager.getConnection(url);
         
 
         PreparedStatement stmt = connection.prepareStatement("INSERT INTO Users"
             + " (name)"
             + " VALUES (?)");
-        stmt.setString(1, user.getName());
+        stmt.setString(1, newUser.getName());
 
         stmt.executeUpdate();
         stmt.close();
         connection.close();
+        
+        return newUser;
     }
 
     @Override
@@ -103,7 +125,7 @@ public class UserDao implements Dao<User, String> {
             ResultSet result = conn.prepareStatement("SELECT * FROM Users").executeQuery()) {
 
             while (result.next()) {
-                users.add(new User(result.getString("name")));
+                users.add(this.create(result.getString("name")));
             }
             conn.close();
         }

@@ -26,6 +26,7 @@ public class EngineTest {
     
     Engine engine;
     String testiStringi = "xyxy1010";
+    User testUser;
     
     
     
@@ -46,7 +47,7 @@ public class EngineTest {
         Properties properties = new Properties();
 
         try {
-            properties.load(new FileInputStream("config.properties"));
+            properties.load(new FileInputStream("TESTconfig.properties"));
         }
         catch (Exception e) {
             System.out.println("Virhe konfiguraatiotiedoston lataamisessa: "+e.toString());
@@ -101,6 +102,20 @@ public class EngineTest {
         
         assertTrue(testattava!=null);
         cleanTestUser();
+    }
+    
+    @Test
+    public void hasUserWorksCorrectlyPositive() {
+        
+        try {
+            this.engine.createUser(testiStringi);
+        }
+        catch (Exception e) {
+            System.out.println("Virhe: "+e.toString());
+        }
+        
+        assertEquals(true, this.engine.hasUser());
+        
     }
     
     @Test
@@ -181,6 +196,87 @@ public class EngineTest {
     public void answerInGoodFormatWorksTooSmallString() {
         
         String test = "xy";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksTooLargeString() {
+        
+        String test = "xyysysysysysys";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksMinusThree() {
+        
+        String test = "-3";
+        
+        assertEquals(true, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksPlusThree() {
+        
+        String test = "3";
+        
+        assertEquals(true, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksMinusNonsense() {
+        
+        String test = "-,jh";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksOnlyMinus() {
+        
+        String test = "-";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksEmptyString() {
+        
+        String test = "";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksBadChar() {
+        
+        String test = "/";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksMinusBadChar() {
+        
+        String test = "-/";
+        
+        assertEquals(false, this.engine.answerInGoodFormat(test));
+
+    }
+    
+    @Test
+    public void answerInGoodFormatWorksMinusBadChar2() {
+        
+        String test = "-;";
         
         assertEquals(false, this.engine.answerInGoodFormat(test));
 

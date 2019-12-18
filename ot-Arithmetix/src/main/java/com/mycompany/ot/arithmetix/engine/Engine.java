@@ -52,11 +52,8 @@ public class Engine {
     
     public void createUser(String name) throws SQLException {
         
-        
-        User createdUser = new User(name);
 
-        this.userDao.create(createdUser);
-        this.loggedInGamer = createdUser;        
+        this.loggedInGamer = this.userDao.create(name);        
     }
     
     public void deleteUser(String name) throws SQLException {
