@@ -22,4 +22,5 @@
 | 11.12.2019 | 2,00 | Käytettävyyden parantelua |
 | 13.12.2019 | 3,00 | Java Daten ihmettelyä |
 | 17.12.2019 | 3,00 | Refaktorointia ja siivoamista |
-| YHTEENSÄ | 38 tuntia | |
+| 21.12.2019 | 3,00 | Käliä |
+| YHTEENSÄ | 41 tuntia | |

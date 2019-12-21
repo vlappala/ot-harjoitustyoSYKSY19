@@ -282,6 +282,34 @@ public class EngineTest {
 
     }
     
+    @Test
+    public void processAnswerWorksPositive() throws Exception {
+        
+        
+        this.engine.createUser(testiStringi);
+        
+        this.engine.newExercise();
+        Exercise ex = this.engine.getExercise();
+        String correctAnswer = ""+ex.getAnswer();
+        
+        assertEquals(true, this.engine.processAnswer(correctAnswer));
+        cleanTestUser();
+    }
+    
+    @Test
+    public void processAnswerWorksNegative() throws Exception {
+        
+        
+        this.engine.createUser(testiStringi);
+        
+        this.engine.newExercise();
+        Exercise ex = this.engine.getExercise();
+        String correctAnswer = ""+(ex.getAnswer()-1);
+        
+        assertEquals(false, this.engine.processAnswer(correctAnswer));
+        cleanTestUser();
+    }
+    
 //    @Test
 //    public void userIsDeletedCorrectly() {
 //        try {

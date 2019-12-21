@@ -21,8 +21,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 /**
@@ -52,18 +59,39 @@ public class Ui extends Application {
         
         VBox loginPane = new VBox(10);
         HBox inputPane = new HBox(10);
-        loginPane.setPadding(new Insets(10));
+        
+        loginPane.setPadding(new Insets(40));
         Label loginLabel = new Label("Käyttäjätunnus: ");
         TextField usernameInput = new TextField();
         
-        inputPane.getChildren().addAll(loginLabel, usernameInput);
-        Label loginMessage = new Label();
+        Label errorLabel = new Label("");
         
-        String loginMessageText = "Tervetuloa matematiikkapeliin! \n"
-                            +   "Syötä olemassaoleva käyttäjätunnus tai anna toivomasi tunnus uudelle käyttäjälle!";
+        
+        
+        
+        Label loginMessage = new Label();
+        loginMessage.setTextFill(Color.web("#FFFFFF"));
+        loginMessage.setTextAlignment(TextAlignment.CENTER);
+        loginMessage.setFont(Font.font("Verdana", 12));
+        
+        Text greetingText = new Text("Tervetuloa matematiikkapeliin!");
+        greetingText.setFont(Font.font("Edwardian Script ITC", 35));
+        greetingText.setTextAlignment(TextAlignment.CENTER);
+        greetingText.setFill(Color.web("#FFFFFF"));
+        
+        String loginMessageText = "Syötä olemassaoleva käyttäjätunnus \n tai \n anna toivomasi tunnus uudelle käyttäjälle!";
         
         loginMessage.setText(loginMessageText);
-         String loginErrorMessage = "Käyttäjätunnuksen pitää olla vähintään 3 ja enintään 8 merkkiä pitkä";
+        
+        
+        
+        // loginMessage.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        Color color = Color.web("#FF5722");
+        loginPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
+        //inputPane.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        String loginErrorMessage = "Käyttäjätunnuksen pitää olla vähintään 3 ja enintään 8 merkkiä pitkä";
         
         
         Button loginButton = new Button("Kirjaudu sisään tai luo uusi käyttäjä");
@@ -72,7 +100,7 @@ public class Ui extends Application {
         loginButton.setOnAction(e->{
             
             if (usernameInput.getText().length() < 3 || usernameInput.getText().length() > 8) {
-                loginMessage.setText(loginMessageText+"\n"+loginErrorMessage);
+                errorLabel.setText(loginErrorMessage);
             } else {
                 
                 try {
@@ -131,7 +159,10 @@ public class Ui extends Application {
            
         });
         
-        loginPane.getChildren().addAll(loginMessage, inputPane, loginButton);
+        inputPane.getChildren().addAll(loginLabel, usernameInput, loginButton);
+        
+        loginPane.getChildren().addAll(greetingText, loginMessage, inputPane, errorLabel);
+        
         
         
         loginScene = new Scene(loginPane, 600, 250);
@@ -198,6 +229,7 @@ public class Ui extends Application {
 
             this.admin = false;
             
+            createLoginScene();
             this.testStage.setScene(loginScene);
             this.testStage.show();
         });

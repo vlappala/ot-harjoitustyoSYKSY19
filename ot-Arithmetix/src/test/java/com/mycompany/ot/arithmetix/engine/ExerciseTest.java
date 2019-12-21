@@ -109,4 +109,89 @@ public class ExerciseTest {
         assertEquals("+", ex.getOperationOut());
         assertEquals(0, ex.getTime(), 0);
     }
+    
+    @Test
+    public void exerciseThirdConstructorWorks(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        String date = "2001-9-11 09:07";
+        
+        Exercise ex = new Exercise(z, "+", w, testi, 0.0, date);
+        
+        assertEquals(z, ex.getX());
+        assertEquals(w, ex.getY());
+        assertEquals(""+z+w, ex.getAnswerCorrectOut());
+        assertEquals("+", ex.getOperationOut());
+        assertEquals(0, ex.getTime(), 0);
+        assertEquals(date, ex.getDate());
+    }
+    
+    @Test
+    public void toStringWorks(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        
+        Exercise ex = new Exercise(z, "+", w, testi, 0.0);
+        
+        assertEquals("" + z + " + " + w + " " + testi + " 0.0", ex.toString());
+
+    }
+    
+    @Test
+    public void getProblemStringWorks(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        
+        Exercise ex = new Exercise(z,w);
+        
+        assertEquals("" + z + " + " + w + "?", ex.getProblemString());
+
+    }
+    
+    @Test
+    public void getCorrectFiWorksPositive(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        
+        Exercise ex = new Exercise(z,w);
+        
+        ex.setCorrect(true);
+        
+        assertEquals("oikein", ex.getCorrectFi());
+        
+        
+
+    }
+    
+    @Test
+    public void getCorrectFiWorksNegative(){
+        
+        int z = this.randomi.nextInt(100);
+        int w = this.randomi.nextInt(100);
+        
+        String testi = ""+z+w;
+        
+        Exercise ex = new Exercise(z,w);
+        
+        ex.setCorrect(false);
+        
+        assertEquals("väärin", ex.getCorrectFi());
+        
+    }
+    
+
+
+    
 }
