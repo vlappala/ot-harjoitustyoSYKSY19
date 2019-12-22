@@ -7,7 +7,7 @@ Sovelluksen käyttämä tiedosto on sisällöltään seuraava:
 
     dbFile=testidata.db
     
-Tietokannan nimen voi antaa konfiguraatiotiedostossa. Mikäli sennimistä tietokantaa ei löydy projektin juurihakemistosta, tietokanta luodaan ohjelman käynnistyessä.
+Tietokannan nimen voi antaa konfiguraatiotiedostossa. Mikäli sen nimistä tietokantaa ei löydy projektin juurihakemistosta, tietokanta luodaan ohjelman käynnistyessä.
 
 ## Ohjelman käynistäminen
 
