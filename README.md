@@ -45,3 +45,7 @@ Checkstyle-tarkastus:
 Suoritettavan jarin generointi
 
     mvn package
+
+JavaDocin generointi
+
+    mvn jxr:jxr javadoc:javadoc
