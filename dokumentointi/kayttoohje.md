@@ -39,15 +39,36 @@ Valikkoruudusta voi siirtyä peliruutuun Aloita pelaaminen-napin painalluksen li
 
 ## Pelaaminen
 
-Peliruudussa voi harjoitella matematiikkaa:
-
 ![Peliruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_peliruutu.jpg)
+
+Peliruudussa voi harjoitella yhteenlaskua positiivisilla kokonaisluvuilla. Peli alkaa, kun käyttäjä painaa Aloita peli-nappia tai enter-painiketta. 
+
+![Tehtäväruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_peliruutu_tehtava.jpg)
+
+Käyttäjältä kysytään kysymys, ja käyttäjän odotetaan vastaavaan tekstiruutuun ja painavan Vastaa-nappia tai enter-painiketta.
+
+![Huono vastaus](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_virheilmoitus_huono_vastaus.jpg)
+
+Mikäli käyttäjän vastaus on huonosti muotoiltu tai lukualueen ulkopuolella, näytetään virheilmoitus.
+
+![Oikea vastaus](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_oikea_vastaus.jpg)
+
+Mikäli käyttäjä vastaa oikein, käyttäjä saa tehtävästä palautteena sekä tiedon vastauksen oikeellisuudesta sekä vastaamiseen kuluneen ajan sekunneissa.
+
+![Väärä vastaus](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_vaara_vastaus.jpg)
+
+Mikäli käyttäjä vastaa väärin, järjestelmä ilmoittaa väärästä vastauksesta ja siirtyy seuraavaan kysymykseen.
+
+Peliruudusta voi siirtyä takaisin valikkoon painamalla Takaisin valikkoon-nappia tai esc-painiketta.
+
 
 ## Tilastotietoja harjoittelusta
 
 Pelaaja voi tarkastella tilastotietoja harjoittelustaan valitsemalla valikkoruudussa Katso tilastosi-painikkeen. Tilastoruutu näyttää seuraavalta:
 
+![Tilastoruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_tilastoruutu.jpg)
 
+Käyttäjä voi järjestää tilastoituja vastauksia sarakkeiden sisältämien arvojen perusteella ja tarkastella esimerkiksi pelkkiä vääriä vastauksiaan, tai järjestää tehtävät päivämäärän perusteella, jolloin on helppo tarkastella sitä, koska tehtäviä on tehty.
 
 
 
