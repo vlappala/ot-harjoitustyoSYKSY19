@@ -27,7 +27,7 @@ public class Timer {
     }
     
     long getDifferenceInSeconds() {
-        return (this.endTime-this.startTime);
+        return (this.endTime - this.startTime);
     }
     void clearTimer() {
         this.startTime = 0;

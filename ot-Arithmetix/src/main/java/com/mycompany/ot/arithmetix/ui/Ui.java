@@ -485,7 +485,7 @@ public class Ui extends Application {
                 } else if (this.gameEngine.processAnswer(answerInput.getText())) {
                     
                     messageText.setText("Oikea vastaus, huraa! \n"
-                            + "Aikasi oli: "+this.gameEngine.getLastClockedTime());
+                            + "Aikasi oli: "+this.gameEngine.getLastClockedTime() + " sekuntia.");
                     
                     
 //                    questionLabel.setText(this.gameEngine.getQuestion());
@@ -498,7 +498,7 @@ public class Ui extends Application {
                     // Väärä vastaus
 
                     messageText.setText("Aijai, väärä vastaus! \n"
-                            + "Aikasi oli: "+this.gameEngine.getLastClockedTime());
+                            + "Aikasi oli: "+this.gameEngine.getLastClockedTime() + " sekuntia.");
 
 
 //                    questionLabel.setText(this.gameEngine.getQuestion());

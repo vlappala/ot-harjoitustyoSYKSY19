@@ -124,23 +124,19 @@ public class Engine {
         if (Integer.parseInt(answer) == this.getExercise().getAnswer()) {
             correct = true;
         }
-               
         double d = this.timer.getDifferenceInSeconds();
-        
 
-        this.lastClockedTime = d/1000;
-        
+        this.lastClockedTime = d / 1000;
         this.timer.clearTimer();
         
         if (this.exercise != null) {
             this.exercise.setCorrect(correct);
-            this.exercise.setTime(d/1000);
+            this.exercise.setTime(d / 1000);
             
             try {
-                this.getExerciseDao().create(this.getExercise(), this.getUser());
-            }
-            catch (Exception e) {
-                System.out.println("Virhe harjoituksen viemisessä tietokantaan: "+e.toString());
+                this.getExerciseDao().create(this.getExercise(), this.getUser()); 
+            } catch (Exception e) {
+                System.out.println("Virhe harjoituksen viemisessä tietokantaan: " + e.toString());
             }
         }
         newExercise();
@@ -188,7 +184,7 @@ public class Engine {
             return false;
         }
         
-        if ((int)text.charAt(0) == 45) {
+        if ((int) text.charAt(0) == 45) {
             
             if (text.length() > 1) {
                 
