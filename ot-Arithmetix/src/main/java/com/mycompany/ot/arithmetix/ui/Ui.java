@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 import javafx.geometry.Insets;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,12 +60,21 @@ public class Ui extends Application {
         
         VBox loginPane = new VBox(10);
         HBox inputPane = new HBox(10);
+        HBox greetingPane = new HBox(1);
+        HBox loginMessagePane = new HBox(1);
+        HBox errorPane = new HBox(1);
         
-        loginPane.setPadding(new Insets(40));
+        loginPane.setPadding(new Insets(10));
+        loginPane.setSpacing(25.0);
+        
         Label loginLabel = new Label("Käyttäjätunnus: ");
         TextField usernameInput = new TextField();
         
         Label errorLabel = new Label("");
+        
+        errorPane.getChildren().add(errorLabel);
+        errorPane.setAlignment(Pos.BOTTOM_CENTER);
+        
         
         
         
@@ -74,20 +84,32 @@ public class Ui extends Application {
         loginMessage.setTextAlignment(TextAlignment.CENTER);
         loginMessage.setFont(Font.font("Verdana", 12));
         
+        
         Text greetingText = new Text("Tervetuloa matematiikkapeliin!");
-        greetingText.setFont(Font.font("Edwardian Script ITC", 35));
+        greetingText.setFont(Font.font("Edwardian Script ITC", 50));
         greetingText.setTextAlignment(TextAlignment.CENTER);
         greetingText.setFill(Color.web("#FFFFFF"));
+        // greetingText.setStrokeWidth(100.0);
+        
+        greetingPane.getChildren().add(greetingText);
+        greetingPane.setAlignment(Pos.CENTER);
+        
+        
         
         String loginMessageText = "Syötä olemassaoleva käyttäjätunnus \n tai \n anna toivomasi tunnus uudelle käyttäjälle!";
         
         loginMessage.setText(loginMessageText);
         
+        loginMessagePane.getChildren().add(loginMessage);
+        loginMessagePane.setAlignment(Pos.CENTER);
+        
+        
+        
         
         
         // loginMessage.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
         
-        Color color = Color.web("#FF5722");
+        
         loginPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
         //inputPane.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
         
@@ -161,7 +183,9 @@ public class Ui extends Application {
         
         inputPane.getChildren().addAll(loginLabel, usernameInput, loginButton);
         
-        loginPane.getChildren().addAll(greetingText, loginMessage, inputPane, errorLabel);
+        inputPane.setAlignment(Pos.CENTER);
+        
+        loginPane.getChildren().addAll(greetingPane, loginMessagePane, inputPane, errorPane);
         
         
         
@@ -172,28 +196,79 @@ public class Ui extends Application {
         
         // Kopsattua käliä:
         
-        VBox loginPane = new VBox(10);
+        VBox verticalPane = new VBox(10);
         HBox inputPane = new HBox(10);
-        loginPane.setPadding(new Insets(10));
+        HBox titlePane = new HBox(1);
+        HBox greetingPane = new HBox(10);
+        HBox menuPane = new HBox(1);
         
-        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
-        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
+        Text titleText = new Text("Arithmetix!");
+        titleText.setFill(Color.web("#FFFFFF"));
+        titleText.setFont(Font.font("Edwardian Script ITC", 50));
+        titleText.setStroke(Color.web("#FFFFFF"));
+        titleText.setStrokeWidth(1.5);
         
-        String greetingTemplate = "";
+        titlePane.getChildren().add(titleText);
+        titlePane.setAlignment(Pos.CENTER);
+        titlePane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        Text greetingText = new Text("");
+        greetingText.setFont(Font.font("Verdana", 20));
+        // greetingText.setFill(Color.web("#FFFFFF"));
+        
+        Text newUserGreetingText = new Text("Kirjattiin uusi käyttäjä, ");
+        newUserGreetingText.setFill(Color.web("#FFFFFF"));
+        
+        Text userNameText = new Text("");
+        userNameText.setFont(Font.font("Edwardian Script ITC", 50));
+        userNameText.setFill(Color.web("#FFFFFF"));
+        
+        Text welcomeText = new Text("Tervetuloa!");
+        welcomeText.setFill(Color.web("#FFFFFF"));
+        
+        Text welcomeTextExistingUser = new Text("Tervetuloa takaisin, ");
+        welcomeTextExistingUser.setFill(Color.web("#FFFFFF"));
+        welcomeTextExistingUser.setFont(Font.font("Verdana", 20));
+        
+        Text menuText = new Text("Valikko: ");
+        menuText.setFont(Font.font("Verdana", 20));
+        menuText.setFill(Color.web("#FFFFFF"));
+        
+        menuPane.getChildren().add(menuText);
+        menuPane.setAlignment(Pos.CENTER);
+        
+        greetingPane.getChildren().add(greetingText);
+        greetingPane.setAlignment(Pos.CENTER);
+        // greetingPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
+        // verticalPane.setPadding(new Insets(10));
+        
+        verticalPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+//        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
+//        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
+//        
+//        String greetingTemplate = "";
         
         if (this.newUser) {
-            greetingTemplate += welcomeMessageNewUser;
+            userNameText.setText(this.gameEngine.getUser().getName()+"!");
+            //greetingText.setText(welcomeMessageNewUser);
+            greetingPane.getChildren().clear();
+            greetingPane.getChildren().addAll(newUserGreetingText, userNameText, welcomeText);
             this.newUser = false;
         }
         else {
-            greetingTemplate += welcomeMessageExistingUser;
+            userNameText.setText(this.gameEngine.getUser().getName()+"!");
+            
+            greetingPane.getChildren().clear();
+            greetingPane.getChildren().addAll(welcomeTextExistingUser, userNameText);
+            // greetingText.setText(welcomeMessageExistingUser);
         }
         
         
-        Label loginMessage = new Label();
-        
-        
-        loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
+//        Label loginMessage = new Label();
+//        
+//        
+//        loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
         
         Button gameButton = new Button("Aloita pelaaminen!");
         gameButton.setDefaultButton(true);
@@ -237,10 +312,13 @@ public class Ui extends Application {
 
         
         inputPane.getChildren().addAll(gameButton, statsButton, logoutButton);
-        loginPane.getChildren().addAll(loginMessage, inputPane);
+        inputPane.setAlignment(Pos.CENTER);
+        verticalPane.getChildren().addAll(titlePane, greetingPane, menuPane, inputPane);
         
+        //Color redColor = Color.web("#FF5722");
         
-        menuScene = new Scene(loginPane, 600, 250);
+        menuScene = new Scene(verticalPane, 600, 250);
+        //menuScene.setFill(redColor);
     }
     
     private void createStatsScene() {
@@ -296,6 +374,7 @@ public class Ui extends Application {
 
         VBox vbox = new VBox(tableView,exitButton);
         vbox.setPadding(new Insets(10));
+        vbox.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         statsScene = new Scene(vbox, 600, 250);
 
@@ -304,16 +383,48 @@ public class Ui extends Application {
     private void createGameScene() {
         
         
-        VBox loginPane = new VBox(10);
-        HBox inputPane = new HBox(10);
-        loginPane.setPadding(new Insets(10));
+        VBox verticalPane = new VBox(5);
+//         verticalPane.setPadding(new Insets(10));
+        verticalPane.setSpacing(20);
         
+        HBox inputPane = new HBox(10);
+        HBox titlePane = new HBox(1);
+        HBox questionPane = new HBox(1);
+        HBox messagePane = new HBox(1);
 
         
-        Label questionLabel = new Label();
+        Text titleText = new Text("Arithmetix!");
+        titleText.setFill(Color.web("#FFFFFF"));
+        titleText.setFont(Font.font("Edwardian Script ITC", 50));
+        titleText.setStroke(Color.web("#FFFFFF"));
+        titleText.setStrokeWidth(1.5);
+        
+        titlePane.getChildren().add(titleText);
+        titlePane.setAlignment(Pos.CENTER);
+        
+        verticalPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+
+        Text questionText = new Text("");
+        questionText.setFont(Font.font("Verdana", 20));
+        questionText.setFill(Color.web("#FFFFFF"));
+        
+        questionPane.getChildren().add(questionText);
+        questionPane.setAlignment(Pos.CENTER);
+        
+        Text messageText = new Text("");
+        messagePane.getChildren().add(messageText);
+        messagePane.setAlignment(Pos.BOTTOM_CENTER);
+        
+        //Label questionLabel = new Label();
         
         if (this.gameEngine.getExercise() != null) {
-            questionLabel.setText(""+this.gameEngine.getQuestion());
+            //questionLabel.setText(""+this.gameEngine.getQuestion());
+            questionText.setText(""+this.gameEngine.getQuestion());
+//            messageText.setText("Voit vastata myös painamalla enteriä.");
+            
+        } else {
+            messageText.setText("Aloita peli painamalla enter tai Aloita peli-nappia");
         }
         
         
@@ -322,13 +433,14 @@ public class Ui extends Application {
         Label answerLabel = new Label("Vastaus: ");
         TextField answerInput = new TextField();
         
-        inputPane.getChildren().addAll(questionLabel, answerLabel, answerInput);
+        inputPane.getChildren().addAll(answerLabel, answerInput);
+        inputPane.setAlignment(Pos.CENTER);
         
 
-        Label gameMessage = new Label();
-        
-        
-        gameMessage.setText("PELI!");
+//        Label gameMessage = new Label();
+//        
+//        
+//        gameMessage.setText("PELI!");
         
         Button menuButton = new Button("Takaisin valikkoon");
         menuButton.setCancelButton(true);
@@ -357,9 +469,12 @@ public class Ui extends Application {
             if (this.gameEngine.getExercise() == null) {
                 this.gameEngine.newExercise();
                 
-                questionLabel.setText(""+this.gameEngine.getExercise().getX()
-                +" "+this.gameEngine.getExercise().getOperation()
-                +" "+this.gameEngine.getExercise().getY()+"?");
+//                questionLabel.setText(""+this.gameEngine.getExercise().getX()
+//                +" "+this.gameEngine.getExercise().getOperation()
+//                +" "+this.gameEngine.getExercise().getY()+"?");
+                
+                questionText.setText(this.gameEngine.getQuestion());
+                messageText.setText("Voit vastata myös painamalla enter-nappia!");
                 
                 answerButton.setText("Vastaa!");
                 
@@ -372,15 +487,16 @@ public class Ui extends Application {
             
             
                 if (!this.gameEngine.answerInGoodFormat(answerInput.getText())) {
-                    gameMessage.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
+                    messageText.setText("Vastaus on muotoiltu huonosti, yritä uudelleen!");
                     answerInput.requestFocus();
                 } else if (this.gameEngine.processAnswer(answerInput.getText())) {
                     
-                    gameMessage.setText("Oikea vastaus, huraa! \n"
+                    messageText.setText("Oikea vastaus, huraa! \n"
                             + "Aikasi oli: "+this.gameEngine.getLastClockedTime());
                     
                     
-                    questionLabel.setText(this.gameEngine.getQuestion());
+//                    questionLabel.setText(this.gameEngine.getQuestion());
+                    questionText.setText(this.gameEngine.getQuestion());
 
                     answerInput.clear();
                     answerInput.requestFocus();
@@ -388,11 +504,12 @@ public class Ui extends Application {
                 } else {
                     // Väärä vastaus
 
-                    gameMessage.setText("Aijai, väärä vastaus! \n"
+                    messageText.setText("Aijai, väärä vastaus! \n"
                             + "Aikasi oli: "+this.gameEngine.getLastClockedTime());
 
 
-                    questionLabel.setText(this.gameEngine.getQuestion());
+//                    questionLabel.setText(this.gameEngine.getQuestion());
+                    questionText.setText(this.gameEngine.getQuestion());
 
                     answerInput.clear();
                     answerInput.requestFocus();
@@ -403,10 +520,10 @@ public class Ui extends Application {
         });
         
         inputPane.getChildren().addAll(answerButton, menuButton);
-        loginPane.getChildren().addAll(gameMessage, inputPane);
+        verticalPane.getChildren().addAll(titlePane, questionPane, inputPane, messagePane);
         
         
-        gameScene = new Scene(loginPane, 600, 250);
+        gameScene = new Scene(verticalPane, 600, 250);
     }
     
     @Override

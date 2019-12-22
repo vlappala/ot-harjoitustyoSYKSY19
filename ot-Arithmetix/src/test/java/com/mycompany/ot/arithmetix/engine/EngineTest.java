@@ -171,15 +171,17 @@ public class EngineTest {
         
         ArrayList<User> x = new ArrayList<>();
         
-        try {
-            this.engine.getUsersFromDatabase();
-            x = this.engine.getUserList();
-        }
-        catch (SQLException e) {
-            System.out.println("Virhe käyttäjälistan lataamisessa!");
-        }
+        
+//        try {
+//            this.engine.getUsersFromDatabase();
+//            x = this.engine.getUserList();
+//        }
+//        catch (SQLException e) {
+//            System.out.println("Virhe käyttäjälistan lataamisessa!");
+//        }
         
         assertEquals(x, this.engine.getUserList());
+        x.clear();
 
     }
     

@@ -106,6 +106,27 @@ public class ExerciseDao implements Dao<Exercise, String> {
         return null;
 	      
     }
+    
+    public double averageTime(User u) throws SQLException {
+        
+        String name = u.getName();
+        
+        double average = 0;
+
+        Connection conn = DriverManager.getConnection(url);
+
+        PreparedStatement stmt = conn.prepareStatement("SELECT avg(time) FROM Exercises WHERE name = ?");
+        stmt.setString(1, name);
+        ResultSet rs = stmt.executeQuery();
+
+        average = rs.getDouble(1);
+
+        conn.close();
+        
+
+        return average;
+    }
+    
     public ArrayList<Exercise> list(String username) throws SQLException {
         
         String name = username;

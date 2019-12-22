@@ -125,7 +125,7 @@ public class UserDao implements Dao<User, String> {
             ResultSet result = conn.prepareStatement("SELECT * FROM Users").executeQuery()) {
 
             while (result.next()) {
-                users.add(this.create(result.getString("name")));
+                users.add(new User(result.getString("name")));
             }
             conn.close();
         }

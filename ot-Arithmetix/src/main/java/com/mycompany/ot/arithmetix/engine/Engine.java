@@ -65,7 +65,7 @@ public class Engine {
     public void getUsersFromDatabase() throws SQLException {
         
         
-        this.users.clear();
+        this.users = new ArrayList<User>();
         List<User> temp = this.userDao.list();
         
         for (User u : temp) {
@@ -166,6 +166,8 @@ public class Engine {
     public double getLastClockedTime() {
         return this.lastClockedTime;
     }
+    
+
     
     public ArrayList<Exercise> getExerciseList() {
         

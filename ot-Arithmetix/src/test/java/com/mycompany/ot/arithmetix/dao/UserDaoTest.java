@@ -5,7 +5,10 @@
  */
 package com.mycompany.ot.arithmetix.dao;
 
+import com.mycompany.ot.arithmetix.engine.User;
 import java.io.FileInputStream;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,7 +42,7 @@ public class UserDaoTest {
         Properties properties = new Properties();
 
         try {
-            properties.load(new FileInputStream("config.properties"));
+            properties.load(new FileInputStream("TESTconfig.properties"));
         }
         catch (Exception e) {
             System.out.println("Virhe konfiguraatiotiedoston lataamisessa: "+e.toString());
@@ -67,5 +70,13 @@ public class UserDaoTest {
         
         assertTrue(this.ud.url != null);
         
+    }
+    
+    @Test
+    public void listWorks() throws SQLException {
+        
+        List<User> x = this.ud.list();
+        
+        assertTrue(x.size()==1);
     }
 }
