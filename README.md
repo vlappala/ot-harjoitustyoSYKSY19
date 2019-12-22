@@ -48,4 +48,4 @@ Suoritettavan jarin generointi
 
 JavaDocin generointi
 
-    mvn jxr:jxr javadoc:javadoc
+    mvn javadoc:javadoc
