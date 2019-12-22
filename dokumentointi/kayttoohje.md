@@ -2,8 +2,8 @@
 
 ## Konfigurointi
 
-Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedosto config.properties, joka määrittelee käytettävän tietokannan nimen.
-Tiedosto on muotoa:
+Ohjelma olettaa, että sen käynnistyshakemistossa on konfiguraatiotiedostot sekä ohjelman varsinaisia konfiguraatioita varten, että ohjelman testejä varten. Tiedostojen sisältö on rakenteeltaan sama. Varsinaisen sovelluksen konfiguraatiotiedoston nimi on config.properties ja testien konfiguraatiotiedoston nimi on TESTconfig.properties. Konfiguraatiotiedostoissa määritellään käytettävän tietokannan nimi.
+Sovelluksen käyttämä tiedosto on sisällöltään seuraava:
 
     dbFile=testidata.db
     

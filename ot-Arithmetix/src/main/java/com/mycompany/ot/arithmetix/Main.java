@@ -31,12 +31,12 @@ public class Main {
 
 
         
-//        Ui.main(args);
+        Ui.main(args);
 
-        Scanner reader = new Scanner(System.in);
-        
-        TextUI textUI = new TextUI(reader);
-        textUI.start();
+//        Scanner reader = new Scanner(System.in);
+//        
+//        TextUI textUI = new TextUI(reader);
+//        textUI.start();
     }
     
 }
