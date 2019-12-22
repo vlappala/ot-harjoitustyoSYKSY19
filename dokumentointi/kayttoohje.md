@@ -19,7 +19,7 @@ Ohjelma käynnistetään komennolla
 
 Ohjelma käynnistyy kirjautumisnäkymään:
 
-![Alkuruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_alkuruutu.jpg)
+![Alkuruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_alkuruutu1.jpg)
 
 Kirjautumisnäkymän jälkeen ohjelman tässä versiossa on tervetuloruutu, josta voi siirtyä peliruutuun. 
 
