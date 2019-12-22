@@ -21,10 +21,33 @@ Ohjelma käynnistyy kirjautumisnäkymään:
 
 ![Alkuruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_alkuruutu1.jpg)
 
-Kirjautumisnäkymän jälkeen ohjelman tässä versiossa on tervetuloruutu, josta voi siirtyä peliruutuun. 
+Kirjautumisnäkymässä on kaksi mahdollisuutta kirjautua sisään. Mikäli käyttäjä on rekisteröitynyt jo aiemmin järjestelmään, voi hän kirjautua sisään syöttämällä aiemmin valitun käyttäjänimen. Käyttäjän on mahdollista valita myös uusi käyttäjänimi syöttämällä se tekstikenttään. Järjestelmä ei kysy varmistuskysymystä käyttäjältä kummassakaan tapauksessa, kirjautuminen onnistuu vain yhtä nappia painamalla.
+
+Kirjautumisnappi on määritelty oletusnapiksi, jolloin kirjautuminen onnistuu paitsi klikkaamalla nappia hiirellä, niin myös enter-napilla.
+
+Mikäli käyttäjä syöttää virheellisen, liian pitkän tai liian lyhyen käyttäjänimen, antaa järjestelmä virheilmoituksen:
+
+![Alkuruutu_virheilmoitus](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_virheilmoitus_kayttajanimi.jpg)
+
+## Kirjautumisen jälkeen
+
+Kun kirjautuminen on onnistunut, on seuraavana vuorossa pelin päävalikkoruutu:
+
+![Valikkoruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_valikkoruutu.jpg)
+
+Valikkoruudusta voi siirtyä peliruutuun Aloita pelaaminen-napin painalluksen lisäksi enter-painikkeella, esc-painike tai Kirjaudu-ulos napin painaminen kirjaa käyttäjän ulos ilman varoitusta.
 
 ## Pelaaminen
 
 Peliruudussa voi harjoitella matematiikkaa:
 
 ![Peliruutu](https://raw.githubusercontent.com/vlappala/ot-harjoitustyoSYKSY19/master/dokumentointi/kuvat/Arithmetix_peliruutu.jpg)
+
+## Tilastotietoja harjoittelusta
+
+Pelaaja voi tarkastella tilastotietoja harjoittelustaan valitsemalla valikkoruudussa Katso tilastosi-painikkeen. Tilastoruutu näyttää seuraavalta:
+
+
+
+
+
