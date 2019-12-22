@@ -25,6 +25,10 @@ Arithmetixin perustana oleva datamalli on yksinkertainen. Käyttäjiin voi liitt
 
 Sovelluksen keskeinen osa on sen Engine-luokka. Engine-luokasta luodaan yksi olio, jolle hyvän käytännön mukaisesti injektoidaan konstruktorin parametrina riippuvuudet UserDao- ja ExerciseDao-olioihin. 
 
+![Luokka_pakkauskaavio](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/kuvat/Arithmetix_luokka_pakkauskaavio.jpg)
+
+Kaaviossa on kuvattu ohjelman keskeiset luokat ja pakkaukset.
+
 ## Tietojen pysyväistallennus
 
 Sovellus tallentaa käyttäjätiedot ja suoritetut harjoitukset tietokantaan. Sovelluksessa on toteutettu dataa käsittelevät osat DAO-suunnittelumallin mukaisesti, jolloin uudet toteutukset on helppo päivittää vanhojen tilalle, jos tarvetta ilmenee.
@@ -57,7 +61,4 @@ Sekvenssikaavio uuden käyttäjän luomisesta:
 ## Järjestelmän heikkoudet
 
 Valittu tietokantaratkaisu sqlite ei välttämättä ole paras mahdollinen. Mahdollisissa tulevissa versioissa asiaan olisi syytä kiinnittää huomiota, samoin kuin tietokannan rakenteeseen. Jotkut sovelluksen jatkokehitysideoista vaativat useita uusia tietokantatauluja, ja sen yhteydessä tietokannan parempi suunnittelu olisi suotavaa.
-
-![Luokka_pakkauskaavio](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/kuvat/Arithmetix_luokka_pakkauskaavio.jpg)
-
 

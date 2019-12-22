@@ -127,7 +127,7 @@ public class Engine {
                
         double d = this.timer.getDifferenceInSeconds();
         
-        System.out.println(d/1000);
+
         this.lastClockedTime = d/1000;
         
         this.timer.clearTimer();

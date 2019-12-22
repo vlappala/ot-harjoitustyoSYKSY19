@@ -89,7 +89,7 @@ public class Ui extends Application {
         greetingText.setFont(Font.font("Edwardian Script ITC", 50));
         greetingText.setTextAlignment(TextAlignment.CENTER);
         greetingText.setFill(Color.web("#FFFFFF"));
-        // greetingText.setStrokeWidth(100.0);
+
         
         greetingPane.getChildren().add(greetingText);
         greetingPane.setAlignment(Pos.CENTER);
@@ -107,11 +107,11 @@ public class Ui extends Application {
         
         
         
-        // loginMessage.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
+
         
         
         loginPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
-        //inputPane.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"), CornerRadii.EMPTY, Insets.EMPTY)));
+
         
         String loginErrorMessage = "Käyttäjätunnuksen pitää olla vähintään 3 ja enintään 8 merkkiä pitkä";
         
@@ -239,19 +239,15 @@ public class Ui extends Application {
         
         greetingPane.getChildren().add(greetingText);
         greetingPane.setAlignment(Pos.CENTER);
-        // greetingPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
-        // verticalPane.setPadding(new Insets(10));
+
         
         verticalPane.setBackground(new Background(new BackgroundFill(Color.web("#FF5722"), CornerRadii.EMPTY, Insets.EMPTY)));
         
-//        String welcomeMessageNewUser = "Kirjattiin uusi käyttäjä "+this.gameEngine.getUser().getName()+"! Tervetuloa!";
-//        String welcomeMessageExistingUser = "Tervetuloa takaisin, "+this.gameEngine.getUser().getName()+"!";
-//        
-//        String greetingTemplate = "";
+
         
         if (this.newUser) {
             userNameText.setText(this.gameEngine.getUser().getName()+"!");
-            //greetingText.setText(welcomeMessageNewUser);
+
             greetingPane.getChildren().clear();
             greetingPane.getChildren().addAll(newUserGreetingText, userNameText, welcomeText);
             this.newUser = false;
@@ -261,14 +257,11 @@ public class Ui extends Application {
             
             greetingPane.getChildren().clear();
             greetingPane.getChildren().addAll(welcomeTextExistingUser, userNameText);
-            // greetingText.setText(welcomeMessageExistingUser);
+
         }
         
         
-//        Label loginMessage = new Label();
-//        
-//        
-//        loginMessage.setText(greetingTemplate+"\n\n"+"MENU!");
+
         
         Button gameButton = new Button("Aloita pelaaminen!");
         gameButton.setDefaultButton(true);
@@ -315,10 +308,10 @@ public class Ui extends Application {
         inputPane.setAlignment(Pos.CENTER);
         verticalPane.getChildren().addAll(titlePane, greetingPane, menuPane, inputPane);
         
-        //Color redColor = Color.web("#FF5722");
+
         
         menuScene = new Scene(verticalPane, 600, 250);
-        //menuScene.setFill(redColor);
+
     }
     
     private void createStatsScene() {

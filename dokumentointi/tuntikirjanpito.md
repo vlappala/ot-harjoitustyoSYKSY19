@@ -23,4 +23,5 @@
 | 13.12.2019 | 3,00 | Java Daten ihmettelyä |
 | 17.12.2019 | 3,00 | Refaktorointia ja siivoamista |
 | 21.12.2019 | 3,00 | Käliä |
-| YHTEENSÄ | 41 tuntia | |
+| 22.12.2019 | 6,00 | Käyttöliittymää ja dokumentointia |
+| YHTEENSÄ | 47 tuntia | |

@@ -18,6 +18,8 @@ Sovelluksen avulla on mahdollista harjoitella aritmetiikkaa
 
 [Arkkitehtuurikuvaus](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/vlappala/ot-harjoitustyoSYKSY19/blob/master/dokumentointi/testausdokumentti.md)
+
 ## Komentorivitoiminnot
 
 
